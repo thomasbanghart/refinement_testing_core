@@ -1,12 +1,12 @@
-include: "//@{CONFIG_PROJECT_NAME}/campaign.view.lkml" 
-        
-        
+include: "//@{CONFIG_PROJECT_NAME}/campaign.view.lkml"
+
+
 view: campaign {
   extends: [campaign_config]
 }
 
 ###################################################
-        
+
 view: campaign_core {
   sql_table_name: braze.CAMPAIGN ;;
   drill_fields: [id]

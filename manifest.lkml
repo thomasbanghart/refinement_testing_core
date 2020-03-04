@@ -1,14 +1,14 @@
-project_name: "block-"
-  
+project_name: "block-braze"
+
 ################ Constants ################
 
 constant: CONFIG_PROJECT_NAME {
-  value: "block--config"
+  value: "block-braze-config"
   export: override_required
 }
 
 constant: CONNECTION_NAME {
-  value: "choose connection"
+  value: "brick-layer"
   export: override_required
 }
 
