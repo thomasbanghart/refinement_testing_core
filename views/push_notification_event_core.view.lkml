@@ -1,12 +1,12 @@
-include: "//@{CONFIG_PROJECT_NAME}/push_notification_event.view.lkml" 
-        
-        
+include: "//@{CONFIG_PROJECT_NAME}/views/push_notification_event.view.lkml"
+
+
 view: push_notification_event {
   extends: [push_notification_event_config]
 }
 
 ###################################################
-        
+
 view: push_notification_event_core {
   sql_table_name: braze.PUSH_NOTIFICATION_EVENT ;;
   drill_fields: [id]

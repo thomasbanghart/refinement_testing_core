@@ -1,12 +1,12 @@
-include: "//@{CONFIG_PROJECT_NAME}/canvas_conversion_behavior.view.lkml" 
-        
-        
+include: "//@{CONFIG_PROJECT_NAME}/views/canvas_conversion_behavior.view.lkml"
+
+
 view: canvas_conversion_behavior {
   extends: [canvas_conversion_behavior_config]
 }
 
 ###################################################
-        
+
 view: canvas_conversion_behavior_core {
   sql_table_name: braze.CANVAS_CONVERSION_BEHAVIOR ;;
 

@@ -1,12 +1,12 @@
-include: "//@{CONFIG_PROJECT_NAME}/canvas_tag.view.lkml" 
-        
-        
+include: "//@{CONFIG_PROJECT_NAME}/views/canvas_tag.view.lkml"
+
+
 view: canvas_tag {
   extends: [canvas_tag_config]
 }
 
 ###################################################
-        
+
 view: canvas_tag_core {
   sql_table_name: braze.CANVAS_TAG ;;
 

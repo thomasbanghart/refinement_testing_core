@@ -1,12 +1,12 @@
-include: "//@{CONFIG_PROJECT_NAME}/canvas_entry_event.view.lkml" 
-        
-        
+include: "//@{CONFIG_PROJECT_NAME}/views/canvas_entry_event.view.lkml"
+
+
 view: canvas_entry_event {
   extends: [canvas_entry_event_config]
 }
 
 ###################################################
-        
+
 view: canvas_entry_event_core {
   sql_table_name: braze.CANVAS_ENTRY_EVENT ;;
   drill_fields: [id]

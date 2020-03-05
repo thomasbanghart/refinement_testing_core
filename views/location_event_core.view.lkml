@@ -1,12 +1,12 @@
-include: "//@{CONFIG_PROJECT_NAME}/location_event.view.lkml" 
-        
-        
+include: "//@{CONFIG_PROJECT_NAME}/views/location_event.view.lkml"
+
+
 view: location_event {
   extends: [location_event_config]
 }
 
 ###################################################
-        
+
 view: location_event_core {
   sql_table_name: braze.LOCATION_EVENT ;;
   drill_fields: [id]

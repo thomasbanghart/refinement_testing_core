@@ -1,12 +1,12 @@
-include: "//@{CONFIG_PROJECT_NAME}/subscription_event.view.lkml" 
-        
-        
+include: "//@{CONFIG_PROJECT_NAME}/views/subscription_event.view.lkml"
+
+
 view: subscription_event {
   extends: [subscription_event_config]
 }
 
 ###################################################
-        
+
 view: subscription_event_core {
   sql_table_name: braze.SUBSCRIPTION_EVENT ;;
   drill_fields: [id]

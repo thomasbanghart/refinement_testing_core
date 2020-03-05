@@ -1,12 +1,12 @@
-include: "//@{CONFIG_PROJECT_NAME}/message_variation.view.lkml" 
-        
-        
+include: "//@{CONFIG_PROJECT_NAME}/views/message_variation.view.lkml"
+
+
 view: message_variation {
   extends: [message_variation_config]
 }
 
 ###################################################
-        
+
 view: message_variation_core {
   sql_table_name: braze.MESSAGE_VARIATION ;;
   drill_fields: [id]

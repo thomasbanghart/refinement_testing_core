@@ -1,4 +1,4 @@
-include: "//@{CONFIG_PROJECT_NAME}/campaign.view.lkml"
+include: "//@{CONFIG_PROJECT_NAME}/views/campaign.view.lkml"
 
 
 view: campaign {

@@ -1,12 +1,12 @@
-include: "//@{CONFIG_PROJECT_NAME}/campaign_enrollment_event.view.lkml" 
-        
-        
+include: "//@{CONFIG_PROJECT_NAME}/views/campaign_enrollment_event.view.lkml"
+
+
 view: campaign_enrollment_event {
   extends: [campaign_enrollment_event_config]
 }
 
 ###################################################
-        
+
 view: campaign_enrollment_event_core {
   sql_table_name: braze.CAMPAIGN_ENROLLMENT_EVENT ;;
   drill_fields: [id]

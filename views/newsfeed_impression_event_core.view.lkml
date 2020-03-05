@@ -1,12 +1,12 @@
-include: "//@{CONFIG_PROJECT_NAME}/newsfeed_impression_event.view.lkml" 
-        
-        
+include: "//@{CONFIG_PROJECT_NAME}/views/newsfeed_impression_event.view.lkml"
+
+
 view: newsfeed_impression_event {
   extends: [newsfeed_impression_event_config]
 }
 
 ###################################################
-        
+
 view: newsfeed_impression_event_core {
   sql_table_name: braze.NEWSFEED_IMPRESSION_EVENT ;;
   drill_fields: [id]

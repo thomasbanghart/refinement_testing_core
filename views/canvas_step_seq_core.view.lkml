@@ -1,12 +1,12 @@
-include: "//@{CONFIG_PROJECT_NAME}/canvas_step_seq.view.lkml" 
-        
-        
+include: "//@{CONFIG_PROJECT_NAME}/views/canvas_step_seq.view.lkml"
+
+
 view: canvas_step_seq {
   extends: [canvas_step_seq_config]
 }
 
 ###################################################
-        
+
 view: canvas_step_seq_core {
   sql_table_name: braze.CANVAS_STEP_SEQ ;;
 

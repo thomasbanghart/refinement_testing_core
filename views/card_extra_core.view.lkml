@@ -1,12 +1,12 @@
-include: "//@{CONFIG_PROJECT_NAME}/card_extra.view.lkml" 
-        
-        
+include: "//@{CONFIG_PROJECT_NAME}/views/card_extra.view.lkml"
+
+
 view: card_extra {
   extends: [card_extra_config]
 }
 
 ###################################################
-        
+
 view: card_extra_core {
   sql_table_name: braze.CARD_EXTRA ;;
 

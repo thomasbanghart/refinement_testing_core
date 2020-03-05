@@ -1,12 +1,12 @@
-include: "//@{CONFIG_PROJECT_NAME}/session_event.view.lkml" 
-        
-        
+include: "//@{CONFIG_PROJECT_NAME}/views/session_event.view.lkml"
+
+
 view: session_event {
   extends: [session_event_config]
 }
 
 ###################################################
-        
+
 view: session_event_core {
   sql_table_name: braze.SESSION_EVENT ;;
   drill_fields: [id]

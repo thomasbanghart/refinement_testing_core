@@ -1,12 +1,12 @@
-include: "//@{CONFIG_PROJECT_NAME}/canvas_conversion_event.view.lkml" 
-        
-        
+include: "//@{CONFIG_PROJECT_NAME}/views/canvas_conversion_event.view.lkml"
+
+
 view: canvas_conversion_event {
   extends: [canvas_conversion_event_config]
 }
 
 ###################################################
-        
+
 view: canvas_conversion_event_core {
   sql_table_name: braze.CANVAS_CONVERSION_EVENT ;;
   drill_fields: [id]

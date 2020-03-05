@@ -1,12 +1,12 @@
-include: "//@{CONFIG_PROJECT_NAME}/campaign_conversion_event.view.lkml" 
-        
-        
+include: "//@{CONFIG_PROJECT_NAME}/views/campaign_conversion_event.view.lkml"
+
+
 view: campaign_conversion_event {
   extends: [campaign_conversion_event_config]
 }
 
 ###################################################
-        
+
 view: campaign_conversion_event_core {
   sql_table_name: braze.CAMPAIGN_CONVERSION_EVENT ;;
   drill_fields: [id]

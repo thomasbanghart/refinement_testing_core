@@ -1,12 +1,12 @@
-include: "//@{CONFIG_PROJECT_NAME}/canvas_step.view.lkml" 
-        
-        
+include: "//@{CONFIG_PROJECT_NAME}/views/canvas_step.view.lkml"
+
+
 view: canvas_step {
   extends: [canvas_step_config]
 }
 
 ###################################################
-        
+
 view: canvas_step_core {
   sql_table_name: braze.CANVAS_STEP ;;
   drill_fields: [id]

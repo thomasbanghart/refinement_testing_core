@@ -1,12 +1,12 @@
-include: "//@{CONFIG_PROJECT_NAME}/purchase_event.view.lkml" 
-        
-        
+include: "//@{CONFIG_PROJECT_NAME}/views/purchase_event.view.lkml"
+
+
 view: purchase_event {
   extends: [purchase_event_config]
 }
 
 ###################################################
-        
+
 view: purchase_event_core {
   sql_table_name: braze.PURCHASE_EVENT ;;
   drill_fields: [id]

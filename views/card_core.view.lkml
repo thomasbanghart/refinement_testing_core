@@ -1,12 +1,12 @@
-include: "//@{CONFIG_PROJECT_NAME}/card.view.lkml" 
-        
-        
+include: "//@{CONFIG_PROJECT_NAME}/views/card.view.lkml"
+
+
 view: card {
   extends: [card_config]
 }
 
 ###################################################
-        
+
 view: card_core {
   sql_table_name: braze.CARD ;;
   drill_fields: [id]

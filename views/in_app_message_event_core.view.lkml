@@ -1,12 +1,12 @@
-include: "//@{CONFIG_PROJECT_NAME}/in_app_message_event.view.lkml" 
-        
-        
+include: "//@{CONFIG_PROJECT_NAME}/views/in_app_message_event.view.lkml"
+
+
 view: in_app_message_event {
   extends: [in_app_message_event_config]
 }
 
 ###################################################
-        
+
 view: in_app_message_event_core {
   sql_table_name: braze.IN_APP_MESSAGE_EVENT ;;
   drill_fields: [id]

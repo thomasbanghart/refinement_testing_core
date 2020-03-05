@@ -1,12 +1,12 @@
-include: "//@{CONFIG_PROJECT_NAME}/device.view.lkml" 
-        
-        
+include: "//@{CONFIG_PROJECT_NAME}/views/device.view.lkml"
+
+
 view: device {
   extends: [device_config]
 }
 
 ###################################################
-        
+
 view: device_core {
   sql_table_name: braze.DEVICE ;;
   drill_fields: [id]

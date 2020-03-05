@@ -1,12 +1,12 @@
-include: "//@{CONFIG_PROJECT_NAME}/app_uninstall.view.lkml" 
-        
-        
+include: "//@{CONFIG_PROJECT_NAME}/views/app_uninstall.view.lkml"
+
+
 view: app_uninstall {
   extends: [app_uninstall_config]
 }
 
 ###################################################
-        
+
 view: app_uninstall_core {
   sql_table_name: braze.APP_UNINSTALL ;;
   drill_fields: [id]

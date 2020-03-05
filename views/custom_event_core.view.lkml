@@ -1,12 +1,12 @@
-include: "//@{CONFIG_PROJECT_NAME}/custom_event.view.lkml" 
-        
-        
+include: "//@{CONFIG_PROJECT_NAME}/views/custom_event.view.lkml"
+
+
 view: custom_event {
   extends: [custom_event_config]
 }
 
 ###################################################
-        
+
 view: custom_event_core {
   sql_table_name: braze.CUSTOM_EVENT ;;
   drill_fields: [id]
