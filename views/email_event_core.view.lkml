@@ -70,6 +70,7 @@ view: email_event_core {
   dimension: message_variation_id {
     type: number
     sql: ${TABLE}.message_variation_id ;;
+    description: "Used when providing a campaign_id to specify which message variation this message should be tracked under"
   }
 
   dimension: message_variation_iupdated_at {
@@ -100,6 +101,7 @@ view: email_event_core {
   dimension: url {
     type: string
     sql: ${TABLE}.url ;;
+    description: "The corresponding URL of the file you would like to attach to your email. This is required if you use 'attachments'"
   }
 
   dimension: user_agent {

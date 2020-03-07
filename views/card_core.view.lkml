@@ -30,6 +30,7 @@ view: card_core {
   dimension: description {
     type: string
     sql: ${TABLE}.description ;;
+    description: "The card's description"
   }
 
   dimension: draft {
@@ -45,6 +46,7 @@ view: card_core {
   dimension: image_url {
     type: string
     sql: ${TABLE}.image_url ;;
+    description: "The card's image URL. Required for 'CAPTIONED_IMAGE' and 'BANNER'"
   }
 
   dimension: message {
@@ -65,6 +67,7 @@ view: card_core {
   dimension: title {
     type: string
     sql: ${TABLE}.title ;;
+    description: "The card's title"
   }
 
   dimension: updated_at {

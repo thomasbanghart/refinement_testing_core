@@ -35,6 +35,7 @@ view: campaign_enrollment_event_core {
   dimension: message_variation_id {
     type: number
     sql: ${TABLE}.message_variation_id ;;
+    description: "Used when providing a campaign_id to specify which message variation this message should be tracked under (must be a Content Card Message)"
   }
 
   dimension: send_id {
