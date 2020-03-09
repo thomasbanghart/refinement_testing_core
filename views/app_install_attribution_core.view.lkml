@@ -30,6 +30,7 @@ view: app_install_attribution_core {
   dimension: time {
     type: string
     sql: ${TABLE}.time ;;
+    description: "datetime as string in ISO 8601 or in `yyyy-MM-dd'T'HH:mm:ss:SSSZ` format."
   }
 
   dimension: user_id {

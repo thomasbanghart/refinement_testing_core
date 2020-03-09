@@ -90,11 +90,13 @@ view: message_variation_core {
   dimension: title {
     type: string
     sql: ${TABLE}.title ;;
+    description: "The card's title"
   }
 
   dimension: type {
     type: string
     sql: ${TABLE}.type ;;
+    description: "One of 'CLASSIC', 'CAPTIONED_IMAGE', or 'BANNER'"
   }
 
   dimension: url {
