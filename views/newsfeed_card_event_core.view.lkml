@@ -49,7 +49,7 @@ view: newsfeed_card_event_core {
   dimension: external_user_id {
     type: number
     sql: ${TABLE}.external_user_id ;;
-    description: "external ID of the user"
+    description: "external id of the user"
   }
 
   dimension: time {
