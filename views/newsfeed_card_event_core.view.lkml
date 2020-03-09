@@ -20,11 +20,13 @@ view: newsfeed_card_event_core {
   dimension: app_id {
     type: number
     sql: ${TABLE}.app_id ;;
+    description: "id for the app on which the user action occurred"
   }
 
   dimension: card_id {
     type: number
     sql: ${TABLE}.card_id ;;
+    description: "id of the card that was clicked"
   }
 
   dimension: card_updated_at {
@@ -35,16 +37,19 @@ view: newsfeed_card_event_core {
   dimension: device_id {
     type: number
     sql: ${TABLE}.device_id ;;
+    description: "id of the device on which the event occurred"
   }
 
   dimension: event_type {
     type: string
     sql: ${TABLE}.event_type ;;
+    description: "type of Newsfeed event: Impression, Click"
   }
 
   dimension: external_user_id {
     type: number
     sql: ${TABLE}.external_user_id ;;
+    description: "external ID of the user"
   }
 
   dimension: time {
@@ -55,11 +60,13 @@ view: newsfeed_card_event_core {
   dimension: timezone {
     type: string
     sql: ${TABLE}.timezone ;;
+    description: "IANA timezone of the user at the time of the event"
   }
 
   dimension: user_id {
     type: number
     sql: ${TABLE}.user_id ;;
+    description: "braze user id of the user"
   }
 
   measure: count {

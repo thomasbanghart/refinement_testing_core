@@ -23,6 +23,7 @@ view: canvas_variation_core {
   dimension: variant_name {
     type: number
     sql: ${TABLE}.variant_name ;;
+    description: "Variation of a campaign, differing as defined by the creator."
   }
 
   measure: count {

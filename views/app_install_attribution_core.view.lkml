@@ -20,22 +20,24 @@ view: app_install_attribution_core {
   dimension: external_user_id {
     type: number
     sql: ${TABLE}.external_user_id ;;
+    description: "external ID of the user"
   }
 
   dimension: source {
     type: string
     sql: ${TABLE}.source ;;
+    description: "the source of the attribution"
   }
 
   dimension: time {
     type: string
     sql: ${TABLE}.time ;;
-    description: "datetime as string in ISO 8601 or in `yyyy-MM-dd'T'HH:mm:ss:SSSZ` format."
   }
 
   dimension: user_id {
     type: number
     sql: ${TABLE}.user_id ;;
+    description:"braze user id of the user"
   }
 
   measure: count {

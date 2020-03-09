@@ -20,11 +20,13 @@ view: push_notification_event_core {
   dimension: app_id {
     type: number
     sql: ${TABLE}.app_id ;;
+    description: "id for the app on which the user action occurred"
   }
 
   dimension: campaign_id {
     type: number
     sql: ${TABLE}.campaign_id ;;
+    description: "id of the campaign if from a campaign"
   }
 
   dimension: campaign_updated_at {
@@ -35,11 +37,13 @@ view: push_notification_event_core {
   dimension: canvas_id {
     type: number
     sql: ${TABLE}.canvas_id ;;
+    description: "id of the Canvas if from a Canvas"
   }
 
   dimension: canvas_step_id {
     type: number
     sql: ${TABLE}.canvas_step_id ;;
+    description: "id of the step for this message if from a Canvas"
   }
 
   dimension: canvas_step_updated_at {
@@ -55,27 +59,31 @@ view: push_notification_event_core {
   dimension: canvas_variation_id {
     type: number
     sql: ${TABLE}.canvas_variation_id ;;
+    description: "id of the canvas variation the user is in if from a Canvas"
   }
 
   dimension: device_id {
     type: number
     sql: ${TABLE}.device_id ;;
+    description: "id of the device that a delivery attempt was made to"
   }
 
   dimension: event_type {
     type: string
     sql: ${TABLE}.event_type ;;
+    description: "type of push event: Send, Open, IOS Foreground, Bounce"
   }
 
   dimension: external_user_id {
     type: number
     sql: ${TABLE}.external_user_id ;;
+    description: "external ID of the user"
   }
 
   dimension: message_variation_id {
     type: number
     sql: ${TABLE}.message_variation_id ;;
-    description: "Used when providing a campaign_id to specify which message variation this message should be tracked under (must be a Content Card Message)"
+    description: "id of the message variation if from a campaign"
   }
 
   dimension: message_variation_iupdated_at {
@@ -86,6 +94,7 @@ view: push_notification_event_core {
   dimension: send_id {
     type: number
     sql: ${TABLE}.send_id ;;
+    description: "id of the message if specified for the campaign"
   }
 
   dimension: time {
@@ -96,11 +105,13 @@ view: push_notification_event_core {
   dimension: timezone {
     type: string
     sql: ${TABLE}.timezone ;;
+    description: "IANA timezone of the user at the time of the event"
   }
 
   dimension: user_id {
     type: number
     sql: ${TABLE}.user_id ;;
+    description: "braze user id of the user"
   }
 
   measure: count {

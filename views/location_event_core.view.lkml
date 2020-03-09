@@ -20,16 +20,19 @@ view: location_event_core {
   dimension: alt_accuracy {
     type: number
     sql: ${TABLE}.alt_accuracy ;;
+    description: "altitude accuracy of recorded location"
   }
 
   dimension: altitude {
     type: number
     sql: ${TABLE}.altitude ;;
+    description: "altitude of recorded location"
   }
 
   dimension: app_id {
     type: number
     sql: ${TABLE}.app_id ;;
+    description: "id for the app on which the user action occurred"
   }
 
   dimension: device_id {
@@ -45,26 +48,31 @@ view: location_event_core {
   dimension: latitude {
     type: number
     sql: ${TABLE}.latitude ;;
+    description: "latitude of recorded location"
   }
 
   dimension: ll_accuracy {
     type: number
     sql: ${TABLE}.ll_accuracy ;;
+    description: "a percentage representing the OS determined accuracy of the recorded location"
   }
 
   dimension: longitude {
     type: number
     sql: ${TABLE}.longitude ;;
+    description: "longitude of recorded location"
   }
 
   dimension: time {
     type: string
     sql: ${TABLE}.time ;;
+    description: "time of the event in seconds since the epoch"
   }
 
   dimension: user_id {
     type: number
     sql: ${TABLE}.user_id ;;
+    description: "braze user id of the user"
   }
 
   measure: count {

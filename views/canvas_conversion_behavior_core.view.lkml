@@ -13,6 +13,7 @@ view: canvas_conversion_behavior_core {
   dimension: canvas_id {
     type: number
     sql: ${TABLE}.canvas_id ;;
+    description: "id of the Canvas if from a canvas"
   }
 
   dimension: canvas_updated_at {
@@ -23,11 +24,13 @@ view: canvas_conversion_behavior_core {
   dimension: conversion_behavior {
     type: string
     sql: ${TABLE}.conversion_behavior ;;
+    description: "JSON-encoded string describing the conversion behavior"
   }
 
   dimension: conversion_behavior_index {
     type: number
     sql: ${TABLE}.conversion_behavior_index ;;
+    description: "index of the conversion behavior"
   }
 
   measure: count {

@@ -20,16 +20,19 @@ view: message_variation_core {
   dimension: alert {
     type: string
     sql: ${TABLE}.alert ;;
+    description: "the notification message"
   }
 
   dimension: body {
     type: string
     sql: ${TABLE}.body ;;
+    description: "JSON object if body is included for message"
   }
 
   dimension: campaign_id {
     type: number
     sql: ${TABLE}.campaign_id ;;
+    description: "id of the campaign if from a campaign"
   }
 
   dimension: campaign_updated_at {
@@ -40,6 +43,7 @@ view: message_variation_core {
   dimension: canvas_step_id {
     type: number
     sql: ${TABLE}.canvas_step_id ;;
+    description: "id of the step for this message if from a Canvas"
   }
 
   dimension: canvas_step_updated_at {
@@ -50,53 +54,61 @@ view: message_variation_core {
   dimension: channel {
     type: string
     sql: ${TABLE}.channel ;;
+    description: "channel type of the message (as in, 'email', 'ios_push', 'webhook', 'content_card', 'in-app_message', 'sms')"
   }
 
   dimension: extras {
     type: string
     sql: ${TABLE}.extras ;;
+    description: "any key-value pairs provided"
   }
 
   dimension: from {
     type: string
     sql: ${TABLE}.``from`` ;;
+    description: "from address and display name (With email channel)"
   }
 
   dimension: headers {
     type: string
     sql: ${TABLE}.headers ;;
+    description: "specified request headers (webhook channel)"
   }
 
   dimension: method {
     type: string
     sql: ${TABLE}.method ;;
+    description: "one of 'POST', 'PUT', 'DELETE', or 'GET'"
   }
 
   dimension: name {
     type: string
     sql: ${TABLE}.name ;;
+    description: "name of the message in the Dashboard (eg., 'Variation 1')"
   }
 
   dimension: reply_to {
     type: string
     sql: ${TABLE}.reply_to ;;
+    description: "reply-to for message, if different than 'from' address (email channel)"
   }
 
   dimension: subject {
     type: string
     sql: ${TABLE}.subject ;;
+    description: "subject (email channel)"
   }
 
   dimension: title {
     type: string
     sql: ${TABLE}.title ;;
-    description: "The card's title"
+    description: "name of the email (email channel)"
   }
 
   dimension: type {
     type: string
     sql: ${TABLE}.type ;;
-    description: "One of 'CLASSIC', 'CAPTIONED_IMAGE', or 'BANNER'"
+
   }
 
   dimension: url {

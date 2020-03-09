@@ -20,11 +20,13 @@ view: card_core {
   dimension: archived {
     type: yesno
     sql: ${TABLE}.archived ;;
+    description: "whether this Card is archived"
   }
 
   dimension: created_at {
     type: string
     sql: ${TABLE}.created_at ;;
+    description: "Date created as ISO 8601 date"
   }
 
   dimension: description {
@@ -36,11 +38,13 @@ view: card_core {
   dimension: draft {
     type: yesno
     sql: ${TABLE}.draft ;;
+    description: "whether this Card is a draft"
   }
 
   dimension: end_at {
     type: string
     sql: ${TABLE}.end_at ;;
+    description: "Date card will stop displaying for users as ISO 8601 date"
   }
 
   dimension: image_url {
@@ -52,16 +56,19 @@ view: card_core {
   dimension: message {
     type: string
     sql: ${TABLE}.message ;;
+    description: "The status of the export, returns 'success' when completed without errors"
   }
 
   dimension: name {
     type: string
     sql: ${TABLE}.name ;;
+    description: "Card name"
   }
 
   dimension: publish_at {
     type: string
     sql: ${TABLE}.publish_at ;;
+    description: "Date card was published as ISO 8601 date"
   }
 
   dimension: title {
@@ -73,6 +80,7 @@ view: card_core {
   dimension: updated_at {
     type: string
     sql: ${TABLE}.updated_at ;;
+    description: "Date last updated as ISO 8601 date"
   }
 
   measure: count {

@@ -20,11 +20,13 @@ view: campaign_conversion_event_core {
   dimension: app_id {
     type: number
     sql: ${TABLE}.app_id ;;
+    description: "id for the app on which the user action occurred"
   }
 
   dimension: campaign_id {
     type: number
     sql: ${TABLE}.campaign_id ;;
+    description: "id of the campaign if from a campaign"
   }
 
   dimension: campaign_updated_at {
@@ -35,22 +37,25 @@ view: campaign_conversion_event_core {
   dimension: conversion_behavior_index {
     type: number
     sql: ${TABLE}.conversion_behavior_index ;;
+    description: "index of the conversion behavior"
   }
 
   dimension: external_user_id {
     type: number
     sql: ${TABLE}.external_user_id ;;
+    description: "external ID of the user"
   }
 
   dimension: message_variation_id {
     type: number
     sql: ${TABLE}.message_variation_id ;;
-    description: "Used when providing a campaign_id to specify which message variation this message should be tracked under (must be a Content Card Message)"
- }
+    description: "id of the message variation if from a campaign"
+  }
 
   dimension: send_id {
     type: number
     sql: ${TABLE}.send_id ;;
+    description: "id of the message if specified for the campaign"
   }
 
   dimension: time {
@@ -61,11 +66,13 @@ view: campaign_conversion_event_core {
   dimension: timezone {
     type: string
     sql: ${TABLE}.timezone ;;
+    description: "IANA timezone of the user at the time of the event"
   }
 
   dimension: user_id {
     type: number
     sql: ${TABLE}.user_id ;;
+    description: "braze user id of the user"
   }
 
   measure: count {

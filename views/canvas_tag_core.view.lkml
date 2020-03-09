@@ -13,6 +13,7 @@ view: canvas_tag_core {
   dimension: canvas_id {
     type: number
     sql: ${TABLE}.canvas_id ;;
+    description: "id of the Canvas if from a canvas"
   }
 
   dimension: canvas_updated_at {
