@@ -198,7 +198,7 @@ view: email_event_core {
     drill_fields: [detail*]
   }
 
-  measure: sent_emails {
+  measure: total_sent {
     type: count
     filters: [ event_type: "Send"]
     value_format_name: decimal_0
@@ -242,7 +242,7 @@ view: email_event_core {
 
   measure: bounce_rate {
     type: number
-    sql: ${total_bounces} / NULLIF(${sent_emails},0) ;;
+    sql: ${total_bounces} / NULLIF(${total_sent},0) ;;
     value_format_name: percent_1
   }
 
@@ -251,6 +251,7 @@ view: email_event_core {
     sql: ${total_clicks} / NULLIF(${total_delivered},0) ;;
     value_format_name: percent_1
   }
+
 
   set: detail {
     fields: [
