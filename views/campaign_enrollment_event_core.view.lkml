@@ -43,12 +43,8 @@ view: campaign_enrollment_event_core {
   dimension: external_user_id {
     type: number
     sql: ${TABLE}.external_user_id ;;
-<<<<<<< HEAD
     hidden: yes
     description: "external ID of the user"
-=======
-    description: "external id of the user"
->>>>>>> branch 'master' of git@github.com:looker/block-braze.git
   }
 
   dimension: message_variation_id {
