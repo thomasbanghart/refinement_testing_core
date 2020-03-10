@@ -52,8 +52,9 @@ view: canvas_core {
     description: "Are web_hook events associated with Canvas?"
   }
 
-  dimension: created_at {
-    type: string
+  dimension_group: created_at {
+    type: time
+    timeframes: [date, month, year]
     sql: ${TABLE}.created_at ;;
     description: "date created as ISO 8601 date"
   }
@@ -61,7 +62,7 @@ view: canvas_core {
   dimension: draft {
     type: yesno
     sql: ${TABLE}.draft ;;
-    description: "date created as ISO 8601 date"
+    description: "whether this Canvas is a draft"
   }
 
   dimension: error {

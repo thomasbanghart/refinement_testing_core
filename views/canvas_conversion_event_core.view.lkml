@@ -8,7 +8,8 @@ view: canvas_conversion_event {
 ###################################################
 
 view: canvas_conversion_event_core {
-  sql_table_name: braze.CANVAS_CONVERSION_EVENT ;;
+  sql_table_name: braze.CANVAS_CONVERSION_EVENT
+    ;;
   drill_fields: [id]
 
   dimension: id {
@@ -23,6 +24,12 @@ view: canvas_conversion_event_core {
     description: "id for the app on which the user action occurred"
   }
 
+  dimension: canvas_conversion_behavior_id {
+    type: number
+    # hidden: yes
+    sql: ${TABLE}.canvas_conversion_behavior_id ;;
+  }
+
   dimension: canvas_id {
     type: number
     sql: ${TABLE}.canvas_id ;;
@@ -33,11 +40,6 @@ view: canvas_conversion_event_core {
     type: number
     sql: ${TABLE}.canvas_step_id ;;
     description: "id of the step for this message if from a Canvas"
-  }
-
-  dimension: canvas_step_updated_at {
-    type: string
-    sql: ${TABLE}.canvas_step_updated_at ;;
   }
 
   dimension: canvas_updated_at {
@@ -51,22 +53,10 @@ view: canvas_conversion_event_core {
     description: "id of the canvas variation the user is in if from a Canvas"
   }
 
-  dimension: conversion_behavior {
-    type: string
-    sql: ${TABLE}.conversion_behavior ;;
-    description: "JSON-encoded string describing the conversion behavior"
-  }
-
-  dimension: conversion_behavior_index {
-    type: number
-    sql: ${TABLE}.conversion_behavior_index ;;
-    description: "index of the conversion behavior"
-  }
-
   dimension: external_user_id {
     type: number
     sql: ${TABLE}.external_user_id ;;
-    description: "external ID of the user"
+    description: "external id of the user"
   }
 
   dimension: time {
@@ -88,6 +78,6 @@ view: canvas_conversion_event_core {
 
   measure: count {
     type: count
-    drill_fields: [id, canvas_step.canvas_step_name, canvas_step.id, canvas.name, canvas.id]
+    drill_fields: [id, canvas_conversion_behavior.id]
   }
 }
