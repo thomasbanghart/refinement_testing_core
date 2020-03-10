@@ -53,18 +53,6 @@ view: canvas_conversion_event_core {
     description: "id of the canvas variation the user is in if from a Canvas"
   }
 
-  dimension: conversion_behavior {
-    type: string
-    sql: ${TABLE}.conversion_behavior ;;
-    description: "JSON-encoded string describing the conversion behavior"
-  }
-
-  dimension: conversion_behavior_index {
-    type: number
-    sql: ${TABLE}.conversion_behavior_index ;;
-    description: "index of the conversion behavior"
-  }
-
   dimension: external_user_id {
     type: number
     sql: ${TABLE}.external_user_id ;;
