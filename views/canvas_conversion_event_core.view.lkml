@@ -26,28 +26,45 @@ view: canvas_conversion_event_core {
 
   dimension: canvas_conversion_behavior_id {
     type: number
-    # hidden: yes
+    hidden: yes
     sql: ${TABLE}.canvas_conversion_behavior_id ;;
   }
 
   dimension: canvas_id {
+    hidden: yes
     type: number
     sql: ${TABLE}.canvas_id ;;
     description: "id of the Canvas if from a canvas"
   }
 
   dimension: canvas_step_id {
+    hidden: yes
     type: number
     sql: ${TABLE}.canvas_step_id ;;
     description: "id of the step for this message if from a Canvas"
   }
 
-  dimension: canvas_updated_at {
-    type: string
-    sql: ${TABLE}.canvas_updated_at ;;
+  dimension_group: canvas_updated_at {
+    hidden:  yes
+    type: time
+    sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.canvas_updated_at) ;;
+    timeframes:
+    [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year,
+      fiscal_month_num,
+      fiscal_quarter,
+      fiscal_quarter_of_year,
+      fiscal_year
+    ]
   }
 
   dimension: canvas_variation_id {
+    hidden: yes
     type: number
     sql: ${TABLE}.canvas_variation_id ;;
     description: "id of the canvas variation the user is in if from a Canvas"
@@ -59,9 +76,22 @@ view: canvas_conversion_event_core {
     description: "external id of the user"
   }
 
-  dimension: time {
-    type: string
-    sql: ${TABLE}.time ;;
+  dimension_group: time {
+    type: time
+    sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.time) ;;
+    timeframes:
+    [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year,
+      fiscal_month_num,
+      fiscal_quarter,
+      fiscal_quarter_of_year,
+      fiscal_year
+    ]
   }
 
   dimension: timezone {

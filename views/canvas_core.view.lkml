@@ -23,30 +23,40 @@ view: canvas_core {
   }
 
   dimension: channel_android_push {
+    label: "Android push"
+    group_label: "Channel"
     type: yesno
     sql: ${TABLE}.channel_android_push ;;
     description: "Are android push events associated with Canvas?"
   }
 
   dimension: channel_email {
+    label: "Email"
+    group_label: "Channel"
     type: yesno
     sql: ${TABLE}.channel_email ;;
     description: "Are email events associated with Canvas?"
   }
 
   dimension: channel_ios_push {
+    label: "iOS push"
+    group_label: "Channel"
     type: yesno
     sql: ${TABLE}.channel_ios_push ;;
     description: "Are IOS push events associated with Canvas?"
   }
 
   dimension: channel_web_push {
+    label: "Web push"
+    group_label: "Channel"
     type: yesno
     sql: ${TABLE}.channel_web_push ;;
     description: "Are web_push events associated with Canvas?"
   }
 
   dimension: channel_webhook {
+    label: "Webhook"
+    group_label: "Channel"
     type: yesno
     sql: ${TABLE}.channel_webhook ;;
     description: "Are web_hook events associated with Canvas?"
@@ -54,10 +64,22 @@ view: canvas_core {
 
   dimension_group: created_at {
     type: time
-    timeframes: [date, month, year]
-    sql: ${TABLE}.created_at ;;
-    description: "date created as ISO 8601 date"
+    sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.created_at) ;;
+    timeframes:
+    [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year,
+      fiscal_month_num,
+      fiscal_quarter,
+      fiscal_quarter_of_year,
+      fiscal_year
+    ]
   }
+
 
   dimension: draft {
     type: yesno
@@ -70,16 +92,42 @@ view: canvas_core {
     sql: ${TABLE}.error ;;
   }
 
-  dimension: first_sent {
-    type: string
-    sql: ${TABLE}.first_sent ;;
+  dimension_group: first_sent {
+    type: time
+    sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.first_sent) ;;
     description: "date of first entry as ISO 8601 date"
+    timeframes:
+    [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year,
+      fiscal_month_num,
+      fiscal_quarter,
+      fiscal_quarter_of_year,
+      fiscal_year
+    ]
   }
 
-  dimension: last_sent {
-    type: string
-    sql: ${TABLE}.last_sent ;;
+  dimension_group: last_sent {
+    type: time
+    sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.last_sent) ;;
     description: "date of last entry as ISO 8601 date"
+    timeframes:
+    [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year,
+      fiscal_month_num,
+      fiscal_quarter,
+      fiscal_quarter_of_year,
+      fiscal_year
+    ]
   }
 
   dimension: name {
@@ -94,10 +142,23 @@ view: canvas_core {
     description: "type of scheduling action"
   }
 
-  dimension: updated_at {
-    type: string
-    sql: ${TABLE}.updated_at ;;
+  dimension_group: updated_at {
+    type: time
+    sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.updated_at) ;;
     description: "date updated as ISO 8601 date"
+    timeframes:
+    [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year,
+      fiscal_month_num,
+      fiscal_quarter,
+      fiscal_quarter_of_year,
+      fiscal_year
+    ]
   }
 
   measure: count {
