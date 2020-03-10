@@ -48,6 +48,11 @@ view: canvas_step_core {
     ]
   }
 
+  dimension: canvas_variation_name{
+    sql: ${canvas_variation.variant_name} ;;
+  }
+
+
   dimension: channel_android_push {
     label: "Android push"
     group_label: "Channel"
