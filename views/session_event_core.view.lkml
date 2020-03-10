@@ -75,4 +75,9 @@ view: session_event_core {
     type: count
     drill_fields: [id, device.id]
   }
+
+  measure: avg_session_duration {
+    type: average
+    sql: ${duration} ;;
+  }
 }
