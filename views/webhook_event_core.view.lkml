@@ -73,7 +73,7 @@ view: webhook_event_core {
 
   dimension_group: canvas_updated {
     type: time
-    sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.step_updated_at) ;;
+    sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.canvas_updated_at) ;;
     timeframes: [
       raw,
       date,
