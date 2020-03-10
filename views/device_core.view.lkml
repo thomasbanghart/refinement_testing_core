@@ -20,16 +20,19 @@ view: device_core {
   dimension: device_model {
     type: string
     sql: ${TABLE}.device_model ;;
+    description: "hardware model of the device"
   }
 
   dimension: os_version {
     type: string
     sql: ${TABLE}.os_version ;;
+    description: "os version of device used for the action"
   }
 
   dimension: platform {
     type: string
     sql: ${TABLE}.platform ;;
+    description: "platform of the device (iOS, Android, web, etc.)"
   }
 
   measure: count {

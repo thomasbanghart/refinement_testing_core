@@ -20,11 +20,13 @@ view: canvas_entry_event_core {
   dimension: canvas_id {
     type: number
     sql: ${TABLE}.canvas_id ;;
+    description: "id of the Canvas if from a canvas"
   }
 
   dimension: canvas_step_id {
     type: number
     sql: ${TABLE}.canvas_step_id ;;
+    description: "id of the step for this message if from a Canvas"
   }
 
   dimension: canvas_step_updated_at {
@@ -40,11 +42,14 @@ view: canvas_entry_event_core {
   dimension: canvas_variation_id {
     type: number
     sql: ${TABLE}.canvas_variation_id ;;
+    description: "id of the canvas variation the user is in if from a Canvas"
   }
 
   dimension: external_user_id {
     type: number
     sql: ${TABLE}.external_user_id ;;
+    description: "external id of the user"
+
   }
 
   dimension: in_control_group {
@@ -60,11 +65,13 @@ view: canvas_entry_event_core {
   dimension: timezone {
     type: string
     sql: ${TABLE}.timezone ;;
+    description: "IANA timezone of the user at the time of the event"
   }
 
   dimension: user_id {
     type: number
     sql: ${TABLE}.user_id ;;
+    description:"braze user id of the user"
   }
 
   measure: count {

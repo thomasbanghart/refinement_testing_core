@@ -13,16 +13,19 @@ view: campaign_tag_core {
   dimension: campaign_id {
     type: number
     sql: ${TABLE}.campaign_id ;;
+    description: "id of the campaign if from a campaign"
   }
 
   dimension: campaign_updated_at {
     type: string
     sql: ${TABLE}.campaign_updated_at ;;
+    description: "date last updated as ISO 8601 date"
   }
 
   dimension: tag {
     type: number
     sql: ${TABLE}.tag ;;
+    description: "tag names associated with the campaign"
   }
 
   measure: count {
