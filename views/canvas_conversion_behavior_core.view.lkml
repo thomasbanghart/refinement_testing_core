@@ -8,7 +8,15 @@ view: canvas_conversion_behavior {
 ###################################################
 
 view: canvas_conversion_behavior_core {
-  sql_table_name: braze.CANVAS_CONVERSION_BEHAVIOR ;;
+  sql_table_name: braze.CANVAS_CONVERSION_BEHAVIOR
+    ;;
+  drill_fields: [id]
+
+  dimension: id {
+    primary_key: yes
+    type: number
+    sql: ${TABLE}.id ;;
+  }
 
   dimension: canvas_id {
     type: number
@@ -32,6 +40,6 @@ view: canvas_conversion_behavior_core {
 
   measure: count {
     type: count
-    drill_fields: [canvas.name, canvas.id]
+    drill_fields: [id, canvas_conversion_event.count]
   }
 }
