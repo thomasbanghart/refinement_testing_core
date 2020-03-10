@@ -11,11 +11,13 @@ view: canvas_variation_core {
   sql_table_name: braze.CANVAS_VARIATION ;;
 
   dimension: canvas_id {
+    hidden: yes
     type: number
     sql: ${TABLE}.canvas_id ;;
   }
 
   dimension_group: canvas_updated_at {
+    hidden: yes
     type: time
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.canvas_updated_at) ;;
     timeframes:
@@ -33,11 +35,21 @@ view: canvas_variation_core {
     ]
   }
 
+# TODO: Is this a string or number field?
   dimension: variant_name {
     type: number
     sql: ${TABLE}.variant_name ;;
+    primary_key: yes
     description: "Variation of a campaign, differing as defined by the creator."
   }
+
+# TODO: 3/10/20 - ERD has field as just 'name' but our test db has variant_name column
+#   dimension: name {
+#     type: string
+#     sql: ${TABLE}.name ;;
+#     description: "Variation of a campaign, differing as defined by the creator."
+#   }
+
 
   measure: count {
     type: count

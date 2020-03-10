@@ -88,35 +88,35 @@ explore: canvas_core {
   from: canvas
   extension: required
   join: subscription_event {
-    view_label: "Campaign Events"
+#     view_label: "Campaign Events"
     sql_on: ${canvas.id} = ${subscription_event.canvas_id} ;;
 #       AND ${canvas.updated_at} = ${subscription_event.canvas_updated_at}
 #     ;;
     relationship: one_to_many
   }
   join: email_event {
-    view_label: "Campaign Events"
+#     view_label: "Campaign Events"
     sql_on: ${canvas.id} = ${email_event.canvas_id} ;;
 #       AND ${canvas.updated_at} = ${email_event.canvas_updated_at}
 #     ;;
     relationship: one_to_many
   }
   join: webhook_event {
-    view_label: "Campaign Events"
+#     view_label: "Campaign Events"
     sql_on: ${canvas.id} = ${webhook_event.canvas_id} ;;
 #       AND ${canvas.updated_at} = ${webhook_event.canvas_updated_at}
 #     ;;
     relationship: one_to_many
   }
   join: in_app_message_event {
-    view_label: "Campaign Events"
+#     view_label: "Campaign Events"
     sql_on: ${canvas.id} = ${in_app_message_event.canvas_id} ;;
 #       AND ${canvas.updated_at} = ${in_app_message_event.canvas_updated_at}
 #     ;;
     relationship: one_to_many
   }
   join: push_notification_event {
-    view_label: "Campaign Events"
+#     view_label: "Campaign Events"
     sql_on: ${canvas.id} = ${push_notification_event.canvas_id} ;;
 #       AND ${canvas.updated_at} = ${push_notification_event.canvas_updated_at}
 #     ;;
