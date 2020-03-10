@@ -184,6 +184,8 @@ view: push_notification_event_core {
 
   measure: count {
     type: count
+    label: "Push Notifications"
+    value_format_name: decimal_0
     drill_fields: [detail*]
   }
 

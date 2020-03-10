@@ -93,6 +93,7 @@ view: campaign_enrollment_event_core {
 
   measure: count {
     type: count
+    label: "Campaign Enrollments"
     drill_fields: [id, message_variation.name, message_variation.id, campaign.name, campaign.id]
   }
 }

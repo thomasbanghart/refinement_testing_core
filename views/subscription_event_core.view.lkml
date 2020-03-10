@@ -183,8 +183,11 @@ view: subscription_event_core {
 
   measure: count {
     type: count
+    label: "Subscriptions"
+    value_format_name: decimal_0
     drill_fields: [detail*]
   }
+
 
   set: detail {
     fields: [
