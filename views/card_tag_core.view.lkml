@@ -13,11 +13,13 @@ view: card_tag_core {
   dimension: card_id {
     type: number
     sql: ${TABLE}.card_id ;;
+    hidden: yes
   }
 
   dimension: card_updated_at {
     type: string
     sql: ${TABLE}.card_updated_at ;;
+    hidden: yes
   }
 
   dimension: tag {

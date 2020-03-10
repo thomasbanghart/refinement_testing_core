@@ -53,10 +53,20 @@ view: campaign_core {
     description: "Are webhook events associated with campaign?"
   }
 
-  dimension: created_at {
-    type: string
-    sql: ${TABLE}.created_at ;;
-    description: "date created as ISO 8601 date"
+  dimension_group: created {
+    type: time
+    sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.created_at) ;;
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year,
+      fiscal_month_num,
+      fiscal_quarter,
+      fiscal_quarter_of_year,
+      fiscal_year]
   }
 
   dimension: draft {
@@ -95,10 +105,20 @@ view: campaign_core {
 
   }
 
-  dimension: updated_at {
-    type: string
-    sql: ${TABLE}.updated_at ;;
-    description: "date last updated as ISO 8601 date"
+  dimension_group: updated {
+    type: time
+    sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.updated_at) ;;
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year,
+      fiscal_month_num,
+      fiscal_quarter,
+      fiscal_quarter_of_year,
+      fiscal_year]
   }
 
   measure: count {

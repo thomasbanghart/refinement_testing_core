@@ -15,23 +15,39 @@ view: campaign_conversion_event_core {
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
+    hidden: yes
+
   }
 
   dimension: app_id {
     type: number
     sql: ${TABLE}.app_id ;;
+    hidden: yes
     description: "id for the app on which the user action occurred"
   }
 
   dimension: campaign_id {
     type: number
     sql: ${TABLE}.campaign_id ;;
+    hidden: yes
     description: "id of the campaign if from a campaign"
   }
 
-  dimension: campaign_updated_at {
-    type: string
-    sql: ${TABLE}.campaign_updated_at ;;
+  dimension_group: updated {
+    type: time
+    hidden: yes
+    sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.updated_at) ;;
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year,
+      fiscal_month_num,
+      fiscal_quarter,
+      fiscal_quarter_of_year,
+      fiscal_year]
   }
 
   dimension: conversion_behavior_index {
@@ -43,24 +59,39 @@ view: campaign_conversion_event_core {
   dimension: external_user_id {
     type: number
     sql: ${TABLE}.external_user_id ;;
+    hidden: yes
     description: "external ID of the user"
   }
 
   dimension: message_variation_id {
     type: number
     sql: ${TABLE}.message_variation_id ;;
+    hidden: yes
     description: "id of the message variation if from a campaign"
   }
 
   dimension: send_id {
     type: number
     sql: ${TABLE}.send_id ;;
+    hidden: yes
     description: "id of the message if specified for the campaign"
   }
 
-  dimension: time {
-    type: string
-    sql: ${TABLE}.time ;;
+  dimension_group: time {
+    label: ""
+    type: time
+    sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.time) ;;
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year,
+      fiscal_month_num,
+      fiscal_quarter,
+      fiscal_quarter_of_year,
+      fiscal_year]
   }
 
   dimension: timezone {
@@ -72,6 +103,7 @@ view: campaign_conversion_event_core {
   dimension: user_id {
     type: number
     sql: ${TABLE}.user_id ;;
+    hidden: yes
     description: "braze user id of the user"
   }
 

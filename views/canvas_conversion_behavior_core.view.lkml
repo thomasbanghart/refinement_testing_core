@@ -13,6 +13,7 @@ view: canvas_conversion_behavior_core {
   dimension: canvas_id {
     type: number
     sql: ${TABLE}.canvas_id ;;
+    hidden: yes
     description: "id of the Canvas if from a canvas"
   }
 

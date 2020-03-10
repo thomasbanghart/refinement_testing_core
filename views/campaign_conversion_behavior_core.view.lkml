@@ -13,13 +13,25 @@ view: campaign_conversion_behavior_core {
   dimension: campaign_id {
     type: number
     sql: ${TABLE}.campaign_id ;;
+    hidden: yes
     description: "id of the campaign if from a campaign"
   }
 
-  dimension: campaign_updated_at {
-    type: string
-    sql: ${TABLE}.campaign_updated_at ;;
-    description: "date last updated as ISO 8601 date"
+  dimension_group: updated {
+    hidden: yes
+    type: time
+    sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.updated_at) ;;
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year,
+      fiscal_month_num,
+      fiscal_quarter,
+      fiscal_quarter_of_year,
+      fiscal_year]
   }
 
   dimension: conversion_behavior {
@@ -36,6 +48,7 @@ view: campaign_conversion_behavior_core {
 
   measure: count {
     type: count
+    hidden: yes
     drill_fields: [campaign.name, campaign.id]
   }
 }

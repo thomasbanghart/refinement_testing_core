@@ -15,6 +15,7 @@ view: card_core {
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
+    hidden: yes
   }
 
   dimension: archived {
@@ -23,10 +24,20 @@ view: card_core {
     description: "whether this Card is archived"
   }
 
-  dimension: created_at {
-    type: string
-    sql: ${TABLE}.created_at ;;
-    description: "Date created as ISO 8601 date"
+  dimension_group: careated {
+    type: time
+    sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.created_at) ;;
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year,
+      fiscal_month_num,
+      fiscal_quarter,
+      fiscal_quarter_of_year,
+      fiscal_year]
   }
 
   dimension: description {
@@ -41,10 +52,21 @@ view: card_core {
     description: "whether this Card is a draft"
   }
 
-  dimension: end_at {
-    type: string
-    sql: ${TABLE}.end_at ;;
-    description: "Date card will stop displaying for users as ISO 8601 date"
+  dimension_group: ended {
+    type: time
+    sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.ended_at) ;;
+    description: "Date card will stop displaying for users"
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year,
+      fiscal_month_num,
+      fiscal_quarter,
+      fiscal_quarter_of_year,
+      fiscal_year]
   }
 
   dimension: image_url {
@@ -65,11 +87,23 @@ view: card_core {
     description: "Card name"
   }
 
-  dimension: publish_at {
-    type: string
-    sql: ${TABLE}.publish_at ;;
-    description: "Date card was published as ISO 8601 date"
+  dimension_group: published {
+    type: time
+    sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.publish_at) ;;
+    description: "Date card was published"
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year,
+      fiscal_month_num,
+      fiscal_quarter,
+      fiscal_quarter_of_year,
+      fiscal_year]
   }
+
 
   dimension: title {
     type: string
@@ -77,10 +111,21 @@ view: card_core {
     description: "The card's title"
   }
 
-  dimension: updated_at {
-    type: string
-    sql: ${TABLE}.updated_at ;;
-    description: "Date last updated as ISO 8601 date"
+  dimension_group: updated {
+    type: time
+    sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.updated_at) ;;
+    description: "Date last updated"
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year,
+      fiscal_month_num,
+      fiscal_quarter,
+      fiscal_quarter_of_year,
+      fiscal_year]
   }
 
   measure: count {

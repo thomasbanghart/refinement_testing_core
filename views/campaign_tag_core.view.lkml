@@ -13,11 +13,13 @@ view: campaign_tag_core {
   dimension: campaign_id {
     type: number
     sql: ${TABLE}.campaign_id ;;
+    hidden: yes
     description: "id of the campaign if from a campaign"
   }
 
   dimension: campaign_updated_at {
     type: string
+    hidden: yes
     sql: ${TABLE}.campaign_updated_at ;;
     description: "date last updated as ISO 8601 date"
   }
@@ -30,6 +32,7 @@ view: campaign_tag_core {
 
   measure: count {
     type: count
+    hidden: yes
     drill_fields: [campaign.name, campaign.id]
   }
 }

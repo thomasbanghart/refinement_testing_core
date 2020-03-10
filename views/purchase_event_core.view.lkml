@@ -15,6 +15,7 @@ view: purchase_event_core {
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
+    hidden: yes
   }
 
   dimension: app_id {
@@ -59,9 +60,21 @@ view: purchase_event_core {
     description: "JSON encoded string of the custom properties for this event"
   }
 
-  dimension: time {
-    type: string
-    sql: ${TABLE}.time ;;
+  dimension_group: time {
+    label: ""
+    type: time
+    sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.time) ;;
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year,
+      fiscal_month_num,
+      fiscal_quarter,
+      fiscal_quarter_of_year,
+      fiscal_year]
   }
 
   dimension: user_id {

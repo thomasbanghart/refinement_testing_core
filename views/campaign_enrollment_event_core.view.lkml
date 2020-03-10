@@ -15,6 +15,7 @@ view: campaign_enrollment_event_core {
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
+    hidden: yes
   }
 
   dimension: campaign_id {
@@ -23,32 +24,58 @@ view: campaign_enrollment_event_core {
     description: "id of the campaign if from a campaign"
   }
 
-  dimension: campaign_updated_at {
-    type: string
-    sql: ${TABLE}.campaign_updated_at ;;
+  dimension_group: campaign_updated {
+    type: time
+    sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.campaign_updated_at) ;;
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year,
+      fiscal_month_num,
+      fiscal_quarter,
+      fiscal_quarter_of_year,
+      fiscal_year]
   }
 
   dimension: external_user_id {
     type: number
     sql: ${TABLE}.external_user_id ;;
+    hidden: yes
     description: "external ID of the user"
   }
 
   dimension: message_variation_id {
     type: number
     sql: ${TABLE}.message_variation_id ;;
+    hidden: yes
     description: "id of the message variation if from a campaign"
   }
 
   dimension: send_id {
     type: number
     sql: ${TABLE}.send_id ;;
+    hidden: yes
     description: "id of the message if specified for the campaign"
   }
 
-  dimension: time {
-    type: string
-    sql: ${TABLE}.time ;;
+  dimension_group: time {
+    label: ""
+    type: time
+    sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.time) ;;
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year,
+      fiscal_month_num,
+      fiscal_quarter,
+      fiscal_quarter_of_year,
+      fiscal_year]
   }
 
   dimension: timezone {
@@ -60,6 +87,7 @@ view: campaign_enrollment_event_core {
   dimension: user_id {
     type: number
     sql: ${TABLE}.user_id ;;
+    hidden: yes
     description:"braze user id of the user"
   }
 
