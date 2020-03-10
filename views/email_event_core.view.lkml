@@ -120,7 +120,7 @@ view: email_event_core {
     description: "id of the message variation if from a campaign"
   }
 
-  dimension_group: message_variation_iupdated {
+  dimension_group: message_variation_updated {
     type: time
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.message_variation_iupdated_at) ;;
     timeframes: [
@@ -193,7 +193,63 @@ view: email_event_core {
 
   measure: count {
     type: count
+    label: "Total Impressions"
+    value_format_name: decimal_0
     drill_fields: [detail*]
+  }
+
+  measure: sent_emails {
+    type: count
+    filters: [ event_type: "Send"]
+    value_format_name: decimal_0
+  }
+
+  measure: total_clicks {
+    type: count
+    filters: [ event_type: "Clicks"]
+    value_format_name: decimal_0
+  }
+
+  measure: total_delivered {
+    type: count
+    filters: [ event_type: "Delivery"]
+    value_format_name: decimal_0
+  }
+
+  measure: total_marked_as_spam {
+    type: count
+    filters: [ event_type: "MarkAsSpam"]
+    value_format_name: decimal_0
+  }
+
+  measure: total_unsubscribed {
+    type: count
+    filters: [ event_type: "Unsubscribe"]
+    value_format_name: decimal_0
+  }
+
+  measure: total_bounces {
+    type: count
+    filters: [ event_type: "Bounce"]
+    value_format_name: decimal_0
+  }
+
+  measure: total_opened {
+    type: count
+    filters: [ event_type: "Open"]
+    value_format_name: decimal_0
+  }
+
+  measure: bounce_rate {
+    type: number
+    sql: ${total_bounces} / NULLIF(${sent_emails},0) ;;
+    value_format_name: percent_1
+  }
+
+  measure: click_rate {
+    type: number
+    sql: ${total_clicks} / NULLIF(${total_delivered},0) ;;
+    value_format_name: percent_1
   }
 
   set: detail {

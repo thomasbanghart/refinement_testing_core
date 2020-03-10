@@ -202,7 +202,9 @@ view: in_app_message_event_core {
 
   measure: count {
     type: count
+    label: "In App Message Events"
     drill_fields: [detail*]
+    value_format_name: decimal_0
   }
 
   set: detail {
