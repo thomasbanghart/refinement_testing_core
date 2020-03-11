@@ -52,6 +52,7 @@ view: message_variation_core {
   }
 
   dimension: channel {
+    label: "Channel Type"
     type: string
     sql: ${TABLE}.channel ;;
     description: "channel type of the message (as in, 'email', 'ios_push', 'webhook', 'content_card', 'in-app_message', 'sms')"
