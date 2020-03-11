@@ -2270,8 +2270,8 @@
     "dist": "pk",
     "fk_type": "pyint",
     "fk_args": {
-      "min_value": 23001,
-      "max_value": 24000
+      "min_value": 0,
+      "max_value": 20
     },
     "bq_type": "INT64"
   },
