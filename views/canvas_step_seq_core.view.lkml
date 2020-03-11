@@ -20,7 +20,6 @@ view: canvas_step_seq_core {
   dimension: canvas_step_seq {
     type: number
     sql: ${TABLE}.canvas_step_seq ;;
-
   }
 
   dimension_group: canvas_updated_at {
