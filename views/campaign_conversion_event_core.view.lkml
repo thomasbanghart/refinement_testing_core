@@ -116,7 +116,7 @@ view: campaign_conversion_event_core {
 
   measure: conversion_rate {
     type: number
-    sql: ${campaign_conversion_event.count} / NULLIF(${email_event.total_sent},0) ;;
+    sql: ${campaign_conversion_event.count} / NULLIF(${campaign.estimated_audience},0) ;;
     value_format_name: percent_1
   }
 }
