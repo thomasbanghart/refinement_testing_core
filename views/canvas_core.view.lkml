@@ -142,6 +142,7 @@ view: canvas_core {
     description: "type of scheduling action"
   }
 
+
   dimension_group: updated_at {
     type: time
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.updated_at) ;;

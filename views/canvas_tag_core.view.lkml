@@ -37,11 +37,13 @@ view: canvas_tag_core {
   }
 
   dimension: tag {
+    hidden: yes
     type: number
     sql: ${TABLE}.tag ;;
   }
 
   measure: count {
+    hidden: yes
     type: count
     drill_fields: [canvas.name, canvas.id]
   }

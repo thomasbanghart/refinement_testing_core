@@ -18,9 +18,9 @@ view: canvas_step_seq_core {
   }
 
   dimension: canvas_step_seq {
+    primary_key: yes
     type: number
     sql: ${TABLE}.canvas_step_seq ;;
-
   }
 
   dimension_group: canvas_updated_at {
@@ -43,6 +43,7 @@ view: canvas_step_seq_core {
   }
 
   measure: count {
+    hidden: yes
     type: count
     drill_fields: [canvas.name, canvas.id]
   }

@@ -157,6 +157,8 @@ explore: canvas_core {
 #       AND ${canvas.updated_at} = ${canvas_entry_event.canvas_step_updated_at}
 #     ;;
     relationship: one_to_many
+# TODO: Does each canvas have exactly one entry event? If so we'll need to make sure that we join them appropriately
+#     sql_on: ${canvas.id} = ${canvas_entry_event.canvas_id} ;;
   }
   join: canvas_conversion_event {
     sql_on: ${canvas_step.id} = ${canvas_conversion_event.canvas_step_id} ;;

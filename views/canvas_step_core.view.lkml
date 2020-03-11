@@ -48,10 +48,14 @@ view: canvas_step_core {
     ]
   }
 
-  dimension: canvas_variation_name{
+#3/10/20: Moved dimensions from canvas_variation and canvas_tag here since they do not seem to need their own view files
+  dimension: canvas_variant_name{
     sql: ${canvas_variation.variant_name} ;;
   }
 
+  dimension: canvas_tag {
+    sql: ${canvas_tag.tag} ;;
+  }
 
   dimension: channel_android_push {
     label: "Android push"

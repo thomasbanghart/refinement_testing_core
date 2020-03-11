@@ -37,6 +37,7 @@ view: canvas_variation_core {
 
 # TODO: Is this a string or number field?
   dimension: variant_name {
+    hidden: yes
     type: number
     sql: ${TABLE}.variant_name ;;
     primary_key: yes
@@ -52,6 +53,7 @@ view: canvas_variation_core {
 
 
   measure: count {
+    hidden: yes
     type: count
     drill_fields: [variant_name, canvas.name, canvas.id]
   }
