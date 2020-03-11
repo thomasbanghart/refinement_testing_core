@@ -65,7 +65,7 @@ explore: campaign_core {
     relationship: one_to_many
   }
   join: campaign_conversion_behavior {
-    view_label: "Campaign Extra"
+    view_label: "Campaign Conversion"
     sql_on: ${campaign.id} = ${campaign_conversion_behavior.campaign_id} ;;
 #     AND ${campaign.updated_at} = ${campaign_conversion_behavior.campaign_updated_at}
 #     ;;
