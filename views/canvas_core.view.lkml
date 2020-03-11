@@ -167,7 +167,7 @@ view: canvas_core {
     drill_fields: [detail*]
   }
 
-  measure: estimated_audience {
+  measure: estimated_impressions {
     type: number
     sql: ${email_event.count} + ${subscription_event.count} + ${webhook_event.count} + ${subscription_event.count}
         + ${in_app_message_event.count} + ${push_notification_event.count};;
