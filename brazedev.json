@@ -2093,9 +2093,11 @@
     "field_name": "channel",
     "dataset": "brazedev",
     "dist": "random",
-    "fk_type": "pybool",
-    "fk_args": {},
-    "bq_type": "BOOL"
+    "fk_type": "random_element",
+    "fk_args": {
+      "elements": "[email, ios_push, webhook, content_card, in-app_message, sms]"
+    },
+    "bq_type": "STRING"
   },
   {
     "table_name": "MESSAGE_VARIATION",
@@ -2270,8 +2272,8 @@
     "dist": "pk",
     "fk_type": "pyint",
     "fk_args": {
-      "min_value": 23001,
-      "max_value": 24000
+      "min_value": 0,
+      "max_value": 20
     },
     "bq_type": "INT64"
   },
