@@ -15,6 +15,7 @@ view: canvas_step_core {
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
+    label: "Canvas Step ID"
   }
 
   dimension: canvas_id {
@@ -89,6 +90,7 @@ view: canvas_step_core {
     type: count
     drill_fields: [detail*]
   }
+
 
   set: detail {
     fields: [
