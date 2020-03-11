@@ -16,7 +16,7 @@ explore: campaign_core {
   from: campaign
   extension: required
   join: subscription_event {
-    #view_label: "Campaign Events"
+    view_label: "Campaign Events"
     sql_on: ${campaign.id} = ${subscription_event.campaign_id} ;;
 #       AND ${campaign.updated_at} = ${subscription_event.campaign_updated_at}
 #     ;;
@@ -58,20 +58,21 @@ explore: campaign_core {
     relationship: one_to_many
   }
   join: campaign_tag {
-    view_label: "Campaign Extra"
+    view_label: "Campaign"
     sql_on: ${campaign.id} = ${campaign_tag.campaign_id} ;;
 #       AND ${campaign.updated_at} = ${campaign_tag.campaign_updated_at}
 #     ;;
     relationship: one_to_many
   }
   join: campaign_conversion_behavior {
-    view_label: "Campaign Conversion"
+    view_label: "Campaign Conversions"
     sql_on: ${campaign.id} = ${campaign_conversion_behavior.campaign_id} ;;
 #     AND ${campaign.updated_at} = ${campaign_conversion_behavior.campaign_updated_at}
 #     ;;
     relationship: one_to_many
   }
   join: campaign_conversion_event {
+    view_label: "Campaign Conversions"
     sql_on: ${campaign_conversion_behavior.campaign_id} = ${campaign_conversion_event.campaign_id} ;;
 #       AND ${campaign_conversion_behavior.campaign_updated_at} = ${campaign_conversion_event.campaign_updated_at}
 #       AND ${campaign_conversion_behavior.conversion_behavior_index} = ${campaign_conversion_event.conversion_behavior_index}

@@ -25,7 +25,7 @@ view: campaign_core {
 
   dimension: channel_android_push {
     label: "Android push"
-    group_label: "Channel"
+    hidden: yes
     type: yesno
     sql: ${TABLE}.channel_android_push ;;
     description: "Are android push events associated with campaign?"
@@ -33,7 +33,7 @@ view: campaign_core {
 
   dimension: channel_email {
     label: "Email"
-    group_label: "Channel"
+    hidden: yes
     type: string
     sql: ${TABLE}.channel_email ;;
     description: "Are email events associated with campaign?"
@@ -41,7 +41,7 @@ view: campaign_core {
 
   dimension: channel_ios_push {
     label: "iOS push"
-    group_label: "Channel"
+    hidden: yes
     type: yesno
     sql: ${TABLE}.channel_ios_push ;;
     description: "Are IOS push events associated with campaign?"
@@ -49,7 +49,7 @@ view: campaign_core {
 
   dimension: channel_web_push {
     label: "Web push"
-    group_label: "Channel"
+    hidden: yes
     type: yesno
     sql: ${TABLE}.channel_web_push ;;
     description: "Are web_push events associated with campaign?"
@@ -57,10 +57,22 @@ view: campaign_core {
 
   dimension: channel_webhook {
     label: "Webhook"
-    group_label: "Channel"
     type: yesno
+    hidden: yes
     sql: ${TABLE}.channel_webhook ;;
     description: "Are webhook events associated with campaign?"
+  }
+
+  dimension: channel {
+    type: string
+    sql: CASE
+          WHEN ${channel_email} = TRUE THEN 'Email'
+          WHEN ${channel_ios_push} = TRUE THEN 'iOS Push'
+          WHEN ${channel_web_push} = TRUE THEN 'Web Push'
+          WHEN ${channel_webhook} = TRUE THEN 'Webhook'
+          WHEN ${channel_android_push} = TRUE THEN 'Android Push'
+        ELSE NULL END
+        ;;
   }
 
   dimension_group: created {

@@ -26,6 +26,7 @@ view: campaign_tag_core {
 
   dimension: tag {
     type: number
+    label: "Campaign Tag"
     sql: ${TABLE}.tag ;;
     description: "tag names associated with the campaign"
   }
