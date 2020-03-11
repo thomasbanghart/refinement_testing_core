@@ -2091,9 +2091,11 @@
     "field_name": "channel",
     "dataset": "brazedev",
     "dist": "random",
-    "fk_type": "pybool",
-    "fk_args": {},
-    "bq_type": "BOOL"
+    "fk_type": "random_element",
+    "fk_args": {
+      "elements": "[email, ios_push, webhook, content_card, in-app_message, sms]"
+    },
+    "bq_type": "STRING"
   },
   {
     "table_name": "MESSAGE_VARIATION",
