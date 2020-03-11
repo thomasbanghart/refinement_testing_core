@@ -112,4 +112,11 @@ view: campaign_conversion_event_core {
     label: "Camapign Conversions"
     drill_fields: [id, message_variation.name, message_variation.id, campaign.name, campaign.id]
   }
+
+
+  measure: conversion_rate {
+    type: number
+    sql: ${campaign_conversion_event.count} / NULLIF(${email_event.total_sent},0) ;;
+    value_format_name: percent_1
+  }
 }
