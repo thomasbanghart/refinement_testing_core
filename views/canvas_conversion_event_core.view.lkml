@@ -110,4 +110,11 @@ view: canvas_conversion_event_core {
     type: count
     drill_fields: [id, canvas_conversion_behavior.id]
   }
+
+  measure: conversion_rate {
+    type: number
+    sql: ${count} / NULLIF(${canvas.estimated_audience},0) ;;
+    value_format_name: percent_1
+  }
+
 }
