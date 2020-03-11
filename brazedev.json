@@ -1413,8 +1413,10 @@
     "field_name": "event_type",
     "dataset": "brazedev",
     "dist": "random",
-    "fk_type": "safe_color_name",
-    "fk_args": {},
+    "fk_type": "random_element",
+    "fk_args": {
+      "elements": "[Send, Delivery, Open, Clicks, Bounce, SoftBounce, MarkAsSpam, Unsubscribe]"
+    },
     "bq_type": "STRING"
   },
   {
