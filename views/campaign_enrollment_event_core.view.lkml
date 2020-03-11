@@ -26,6 +26,7 @@ view: campaign_enrollment_event_core {
 
   dimension_group: campaign_updated {
     type: time
+    hidden: yes
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.campaign_updated_at) ;;
     timeframes: [
       raw,
@@ -62,8 +63,9 @@ view: campaign_enrollment_event_core {
   }
 
   dimension_group: time {
-    label: ""
+    label: "Campaign Enrollment"
     type: time
+    group_label: "Dates"
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.time) ;;
     timeframes: [
       raw,
@@ -80,6 +82,7 @@ view: campaign_enrollment_event_core {
 
   dimension: timezone {
     type: string
+    hidden: yes
     sql: ${TABLE}.timezone ;;
     description: "IANA timezone of the user at the time of the event"
   }

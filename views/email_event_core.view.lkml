@@ -28,6 +28,7 @@ view: email_event_core {
   dimension_group: campaign_updated {
     type: time
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.camapign_updated_at) ;;
+    hidden: yes
     timeframes: [
       raw,
       date,
@@ -57,6 +58,7 @@ view: email_event_core {
 
   dimension_group: canvas_step_updated {
     type: time
+    hidden: yes
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.canvas_step_updated_at) ;;
     timeframes: [
       raw,
@@ -73,6 +75,7 @@ view: email_event_core {
 
   dimension_group: canvas_updated {
     type: time
+    hidden: yes
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.canvas_updated_at) ;;
     timeframes: [
       raw,
@@ -122,6 +125,7 @@ view: email_event_core {
 
   dimension_group: message_variation_updated {
     type: time
+    hidden: yes
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.message_variation_iupdated_at) ;;
     timeframes: [
       raw,
@@ -150,7 +154,8 @@ view: email_event_core {
   }
 
   dimension_group: time {
-    label: ""
+    label: "Email Event"
+    group_label: "Dates"
     type: time
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.time) ;;
     timeframes: [
@@ -168,12 +173,14 @@ view: email_event_core {
 
   dimension: timezone {
     type: string
+    hidden: yes
     sql: ${TABLE}.timezone ;;
     description: "IANA timezone of the user at the time of the event"
   }
 
   dimension: url {
     type: string
+    label: "Email Click URL"
     sql: ${TABLE}.url ;;
     description: "the URL that was clicked (Email Click events only)"
   }

@@ -23,35 +23,35 @@ explore: campaign_core {
     relationship: one_to_many
   }
   join: email_event {
-    #view_label: "Campaign Events"
+    view_label: "Campaign Events"
     sql_on: ${campaign.id} = ${email_event.campaign_id} ;;
 #       AND ${campaign.updated_at} = ${email_event.campaign_updated_at}
 #     ;;
     relationship: one_to_many
   }
   join: webhook_event {
-    #view_label: "Campaign Events"
+    view_label: "Campaign Events"
     sql_on: ${campaign.id} = ${webhook_event.campaign_id} ;;
 #       AND ${campaign.updated_at} = ${webhook_event.campaign_updated_at}
 #     ;;
     relationship: one_to_many
   }
   join: in_app_message_event {
-    #view_label: "Campaign Events"
+    view_label: "Campaign Events"
     sql_on: ${campaign.id} = ${in_app_message_event.campaign_id} ;;
 #       AND ${campaign.updated_at} = ${in_app_message_event.campaign_updated_at}
 #     ;;
     relationship: one_to_many
   }
   join: push_notification_event {
-    #view_label: "Campaign Events"
+    view_label: "Campaign Events"
     sql_on: ${campaign.id} = ${push_notification_event.campaign_id} ;;
 #       AND ${campaign.updated_at} = ${push_notification_event.campaign_updated_at}
 #     ;;
     relationship: one_to_many
   }
   join: campaign_enrollment_event {
-    #view_label: "Campaign Events"
+    view_label: "Campaign Events"
     sql_on: ${campaign.id} = ${campaign_enrollment_event.campaign_id} ;;
 #       AND ${campaign.updated_at} = ${campaign_enrollment_event.campaign_updated_at}
 #     ;;

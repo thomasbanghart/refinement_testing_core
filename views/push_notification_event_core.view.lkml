@@ -34,6 +34,7 @@ view: push_notification_event_core {
 
   dimension_group: campaign_updated {
     type: time
+    hidden: yes
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.camapign_updated_at) ;;
     timeframes: [
       raw,
@@ -64,6 +65,7 @@ view: push_notification_event_core {
 
   dimension_group: canvas_step_updated {
     type: time
+    hidden: yes
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.canvas_step_updated_at) ;;
     timeframes: [
       raw,
@@ -80,6 +82,7 @@ view: push_notification_event_core {
 
   dimension_group: canvas_updated {
     type: time
+    hidden: yes
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.canvas_updated_at) ;;
     timeframes: [
       raw,
@@ -110,7 +113,7 @@ view: push_notification_event_core {
 
   dimension: event_type {
     type: string
-    hidden: yes
+    label: "Push Notification Event Type"
     sql: ${TABLE}.event_type ;;
     description: "type of push event: Send, Open, IOS Foreground, Bounce"
   }
@@ -131,6 +134,7 @@ view: push_notification_event_core {
 
   dimension_group: message_variation_updated {
     type: time
+    hidden:  yes
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.message_variation_iupdated_at) ;;
     timeframes: [
       raw,
@@ -153,7 +157,8 @@ view: push_notification_event_core {
   }
 
   dimension_group: time {
-    label: ""
+    label: "Push Notification Event"
+    group_label: "Dates"
     type: time
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.time) ;;
     timeframes: [

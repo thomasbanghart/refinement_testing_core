@@ -27,6 +27,7 @@ view: subscription_event_core {
 
   dimension_group: campaign_updated {
     type: time
+    hidden: yes
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.campaign_updated_at) ;;
     timeframes: [
       raw,
@@ -57,6 +58,7 @@ view: subscription_event_core {
 
   dimension_group: canvas_step_updated {
     type: time
+    hidden: yes
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.canvas_step_updated_at) ;;
     timeframes: [
       raw,
@@ -73,6 +75,7 @@ view: subscription_event_core {
 
   dimension_group: canvas_updated {
     type: time
+    hidden: yes
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.canvas_updated_at) ;;
     timeframes: [
       raw,
@@ -96,6 +99,7 @@ view: subscription_event_core {
 
   dimension: email_address {
     type: string
+    hidden: yes
     sql: ${TABLE}.email_address ;;
     description: "email address for this event"
   }
@@ -116,6 +120,7 @@ view: subscription_event_core {
 
   dimension_group: message_variation_updated {
     type: time
+    hidden: yes
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.message_variation_iupdated_at) ;;
     timeframes: [
       raw,
@@ -145,14 +150,14 @@ view: subscription_event_core {
   }
 
   dimension: subscription_status {
-    type: yesno
-    hidden: yes
+    type: string
+    hidden: no
     sql: ${TABLE}.subscription_status ;;
     description: "status of the subscription after the change: 'Subscribed' or 'Unsubscribed'"
   }
 
   dimension_group: time {
-    label: ""
+    label: "Subscription Event"
     type: time
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.time) ;;
     timeframes: [
@@ -184,6 +189,7 @@ view: subscription_event_core {
   measure: count {
     type: count
     label: "Subscriptions"
+    filters: [subscription_status: "Subscribed"]
     value_format_name: decimal_0
     drill_fields: [detail*]
   }

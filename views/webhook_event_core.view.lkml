@@ -27,6 +27,7 @@ view: webhook_event_core {
 
   dimension_group: campaign_updated {
     type: time
+    hidden: yes
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.camapign_updated_at) ;;
     timeframes: [
       raw,
@@ -57,6 +58,7 @@ view: webhook_event_core {
 
   dimension_group: canvas_step_updated {
     type: time
+    hidden: yes
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.canvas_step_updated_at) ;;
     timeframes: [
       raw,
@@ -73,6 +75,7 @@ view: webhook_event_core {
 
   dimension_group: canvas_updated {
     type: time
+    hidden: yes
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.canvas_updated_at) ;;
     timeframes: [
       raw,
@@ -110,6 +113,7 @@ view: webhook_event_core {
 
   dimension_group: message_variation_updated {
     type: time
+    hidden: yes
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.message_variation_updated_at) ;;
     timeframes: [
       raw,
@@ -131,7 +135,8 @@ view: webhook_event_core {
   }
 
   dimension_group: time {
-    label: ""
+    label: "Webhook Event"
+    group_label: "Dates"
     type: time
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.time) ;;
     timeframes: [
@@ -149,6 +154,7 @@ view: webhook_event_core {
 
   dimension: timezone {
     type: string
+    hidden: yes
     sql: ${TABLE}.timezone ;;
     description: "IANA timezone of the user at the time of the event"
   }
@@ -162,6 +168,7 @@ view: webhook_event_core {
 
   measure: count {
     type: count
+    label: "Webhook Events"
     drill_fields: [detail*]
   }
 

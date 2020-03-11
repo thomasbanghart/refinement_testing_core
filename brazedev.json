@@ -1765,9 +1765,11 @@
     "field_name": "subscription_status",
     "dataset": "brazedev",
     "dist": "random",
-    "fk_type": "pybool",
-    "fk_args": {},
-    "bq_type": "BOOL"
+    "fk_type": "random_element",
+    "fk_args": {
+      "elements": "[Subscribed, Unsubscribed]"
+    },
+    "bq_type": "STRING",
   },
   {
     "table_name": "SUBSCRIPTION_EVENT",

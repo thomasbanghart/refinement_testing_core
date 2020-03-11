@@ -41,6 +41,7 @@ view: in_app_message_event_core {
 
   dimension_group: campaign_updated {
     type: time
+    hidden: yes
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.camapign_updated_at) ;;
     timeframes: [
       raw,
@@ -71,6 +72,7 @@ view: in_app_message_event_core {
 
   dimension_group: canvas_step_updated {
     type: time
+    hidden: yes
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.canvas_step_updated_at) ;;
     timeframes: [
       raw,
@@ -87,6 +89,7 @@ view: in_app_message_event_core {
 
   dimension_group: canvas_updated {
     type: time
+    hidden: yes
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.canvas_updated_at) ;;
     timeframes: [
       raw,
@@ -117,6 +120,7 @@ view: in_app_message_event_core {
 
   dimension: card_updated_at {
     type: string
+    hidden: yes
     sql: ${TABLE}.card_updated_at ;;
   }
 
@@ -129,6 +133,7 @@ view: in_app_message_event_core {
 
   dimension: event_type {
     type: string
+    label: "In-App Message Event Type"
     sql: ${TABLE}.event_type ;;
     description: "type of In-App Message event: Impression, Click"
   }
@@ -149,6 +154,7 @@ view: in_app_message_event_core {
 
   dimension_group: message_variation_updated {
     type: time
+    hidden: yes
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.message_variation_iupdated_at) ;;
     timeframes: [
       raw,
@@ -171,7 +177,8 @@ view: in_app_message_event_core {
   }
 
   dimension_group: time {
-    label: ""
+    label: "In App Message Event"
+    group_label: "Dates"
     type: time
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.time) ;;
     timeframes: [
@@ -189,6 +196,7 @@ view: in_app_message_event_core {
 
   dimension: timezone {
     type: string
+    hidden: yes
     sql: ${TABLE}.timezone ;;
     description: "IANA timezone of the user at the time of the event"
   }
