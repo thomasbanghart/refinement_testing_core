@@ -8,7 +8,7 @@ view: canvas {
 ###################################################
 
 view: canvas_core {
-  sql_table_name: braze.CANVAS ;;
+  sql_table_name: brazedev.CANVAS ;;
   drill_fields: [id]
 
   dimension: id {

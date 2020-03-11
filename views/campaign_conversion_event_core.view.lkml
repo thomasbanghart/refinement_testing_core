@@ -8,7 +8,7 @@ view: campaign_conversion_event {
 ###################################################
 
 view: campaign_conversion_event_core {
-  sql_table_name: braze.CAMPAIGN_CONVERSION_EVENT ;;
+  sql_table_name: brazedev.CAMPAIGN_CONVERSION_EVENT ;;
   drill_fields: [id]
 
   dimension: id {

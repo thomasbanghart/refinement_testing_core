@@ -8,7 +8,7 @@ view: location_event {
 ###################################################
 
 view: location_event_core {
-  sql_table_name: braze.LOCATION_EVENT ;;
+  sql_table_name: brazedev.LOCATION_EVENT ;;
   drill_fields: [id]
 
   dimension: id {

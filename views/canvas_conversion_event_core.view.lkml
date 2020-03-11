@@ -8,7 +8,7 @@ view: canvas_conversion_event {
 ###################################################
 
 view: canvas_conversion_event_core {
-  sql_table_name: braze.CANVAS_CONVERSION_EVENT
+  sql_table_name: brazedev.CANVAS_CONVERSION_EVENT
     ;;
   drill_fields: [id]
 

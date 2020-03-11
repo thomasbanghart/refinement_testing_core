@@ -8,7 +8,7 @@ view: card {
 ###################################################
 
 view: card_core {
-  sql_table_name: braze.CARD ;;
+  sql_table_name: brazedev.CARD ;;
   drill_fields: [id]
 
   dimension: id {

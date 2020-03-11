@@ -8,7 +8,7 @@ view: purchase_event {
 ###################################################
 
 view: purchase_event_core {
-  sql_table_name: braze.PURCHASE_EVENT ;;
+  sql_table_name: brazedev.PURCHASE_EVENT ;;
   drill_fields: [id]
 
   dimension: id {

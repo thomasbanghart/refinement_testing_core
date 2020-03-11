@@ -8,7 +8,7 @@ view: custom_event {
 ###################################################
 
 view: custom_event_core {
-  sql_table_name: braze.CUSTOM_EVENT ;;
+  sql_table_name: brazedev.CUSTOM_EVENT ;;
   drill_fields: [id]
 
   dimension: id {

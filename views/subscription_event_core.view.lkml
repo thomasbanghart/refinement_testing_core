@@ -8,7 +8,7 @@ view: subscription_event {
 ###################################################
 
 view: subscription_event_core {
-  sql_table_name: braze.SUBSCRIPTION_EVENT ;;
+  sql_table_name: brazedev.SUBSCRIPTION_EVENT ;;
   drill_fields: [id]
 
   dimension: id {

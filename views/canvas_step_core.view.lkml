@@ -8,7 +8,7 @@ view: canvas_step {
 ###################################################
 
 view: canvas_step_core {
-  sql_table_name: braze.CANVAS_STEP ;;
+  sql_table_name: brazedev.CANVAS_STEP ;;
   drill_fields: [id]
 
   dimension: id {

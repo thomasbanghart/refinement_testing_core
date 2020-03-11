@@ -8,7 +8,7 @@ view: device {
 ###################################################
 
 view: device_core {
-  sql_table_name: braze.DEVICE ;;
+  sql_table_name: brazedev.DEVICE ;;
   drill_fields: [id]
 
   dimension: id {

@@ -8,7 +8,7 @@ view: newsfeed_impression_event {
 ###################################################
 
 view: newsfeed_impression_event_core {
-  sql_table_name: braze.NEWSFEED_IMPRESSION_EVENT ;;
+  sql_table_name: brazedev.NEWSFEED_IMPRESSION_EVENT ;;
   drill_fields: [id]
 
   dimension: id {

@@ -8,7 +8,7 @@ view: canvas_tag {
 ###################################################
 
 view: canvas_tag_core {
-  sql_table_name: braze.CANVAS_TAG ;;
+  sql_table_name: brazedev.CANVAS_TAG ;;
 
   dimension: canvas_id {
     hidden: yes

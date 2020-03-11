@@ -8,7 +8,7 @@ view: canvas_step_seq {
 ###################################################
 
 view: canvas_step_seq_core {
-  sql_table_name: braze.CANVAS_STEP_SEQ ;;
+  sql_table_name: brazedev.CANVAS_STEP_SEQ ;;
 
   dimension: canvas_id {
     hidden: yes

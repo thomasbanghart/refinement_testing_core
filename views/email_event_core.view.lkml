@@ -8,7 +8,7 @@ view: email_event {
 ###################################################
 
 view: email_event_core {
-  sql_table_name: braze.EMAIL_EVENT ;;
+  sql_table_name: brazedev.EMAIL_EVENT ;;
   drill_fields: [id]
 
   dimension: id {

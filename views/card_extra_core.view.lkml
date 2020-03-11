@@ -8,7 +8,7 @@ view: card_extra {
 ###################################################
 
 view: card_extra_core {
-  sql_table_name: braze.CARD_EXTRA ;;
+  sql_table_name: brazedev.CARD_EXTRA ;;
 
   dimension: card_id {
     type: number

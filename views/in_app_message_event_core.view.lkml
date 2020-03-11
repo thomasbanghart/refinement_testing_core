@@ -8,7 +8,7 @@ view: in_app_message_event {
 ###################################################
 
 view: in_app_message_event_core {
-  sql_table_name: braze.IN_APP_MESSAGE_EVENT ;;
+  sql_table_name: brazedev.IN_APP_MESSAGE_EVENT ;;
   drill_fields: [id]
 
   dimension: id {

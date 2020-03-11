@@ -8,7 +8,7 @@ view: push_notification_event {
 ###################################################
 
 view: push_notification_event_core {
-  sql_table_name: braze.PUSH_NOTIFICATION_EVENT ;;
+  sql_table_name: brazedev.PUSH_NOTIFICATION_EVENT ;;
   drill_fields: [id]
 
   dimension: id {

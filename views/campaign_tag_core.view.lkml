@@ -8,7 +8,7 @@ view: campaign_tag {
 ###################################################
 
 view: campaign_tag_core {
-  sql_table_name: braze.CAMPAIGN_TAG ;;
+  sql_table_name: brazedev.CAMPAIGN_TAG ;;
 
   dimension: campaign_id {
     type: number

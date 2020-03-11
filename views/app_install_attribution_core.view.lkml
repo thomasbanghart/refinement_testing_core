@@ -8,7 +8,7 @@ view: app_install_attribution {
 ###################################################
 
 view: app_install_attribution_core {
-  sql_table_name: braze.APP_INSTALL_ATTRIBUTION ;;
+  sql_table_name: brazedev.APP_INSTALL_ATTRIBUTION ;;
   drill_fields: [id]
 
   dimension: id {
