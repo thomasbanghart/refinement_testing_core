@@ -16,7 +16,7 @@ explore: campaign_core {
   from: campaign
   extension: required
   join: subscription_event {
-    #view_label: "Campaign Events"
+    view_label: "Campaign Events"
     sql_on: ${campaign.id} = ${subscription_event.campaign_id} ;;
 #       AND ${campaign.updated_at} = ${subscription_event.campaign_updated_at}
 #     ;;
@@ -68,20 +68,21 @@ explore: campaign_core {
     relationship: one_to_many
   }
   join: campaign_tag {
-    view_label: "Campaign Extra"
+    view_label: "Campaign"
     sql_on: ${campaign.id} = ${campaign_tag.campaign_id} ;;
 #       AND ${campaign.updated_at} = ${campaign_tag.campaign_updated_at}
 #     ;;
     relationship: one_to_many
   }
   join: campaign_conversion_behavior {
-    view_label: "Campaign Conversion"
+    view_label: "Campaign Conversions"
     sql_on: ${campaign.id} = ${campaign_conversion_behavior.campaign_id} ;;
 #     AND ${campaign.updated_at} = ${campaign_conversion_behavior.campaign_updated_at}
 #     ;;
     relationship: one_to_many
   }
   join: campaign_conversion_event {
+    view_label: "Campaign Conversions"
     sql_on: ${campaign_conversion_behavior.campaign_id} = ${campaign_conversion_event.campaign_id} ;;
 #       AND ${campaign_conversion_behavior.campaign_updated_at} = ${campaign_conversion_event.campaign_updated_at}
 #       AND ${campaign_conversion_behavior.conversion_behavior_index} = ${campaign_conversion_event.conversion_behavior_index}
@@ -176,11 +177,29 @@ explore: canvas_core {
 # TODO: Does each canvas have exactly one entry event? If so we'll need to make sure that we join them appropriately
 #     sql_on: ${canvas.id} = ${canvas_entry_event.canvas_id} ;;
   }
+  join: entry_canvas_step {
+    from: canvas_step
+    view_label: "Canvas Entry Event"
+    sql_on: ${canvas_entry_event.canvas_step_id} = ${entry_canvas_step.id} ;;
+#       AND ${canvas_entry_event.updated_at} = ${entry_canvas_step.canvas_updated_at}
+#     ;;
+    relationship: one_to_many
+    fields: [canvas_step_name, id]
+  }
   join: canvas_conversion_event {
     sql_on: ${canvas_step.id} = ${canvas_conversion_event.canvas_step_id} ;;
 #       AND ${canvas.updated_at} = ${canvas_conversion_event.canvas_updated_at}
 #     ;;
     relationship: one_to_many
+  }
+  join: conversion_canvas_step {
+    from: canvas_step
+    view_label: "Canvas Conversion Event"
+    sql_on: ${canvas_conversion_event.canvas_step_id} = ${conversion_canvas_step.id} ;;
+#       AND ${canvas_conversion_event.updated_at} = ${conversion_canvas_step.canvas_updated_at}
+#     ;;
+    relationship: one_to_many
+    fields: [canvas_step_name, id]
   }
   join: canvas_conversion_behavior {
     sql_on: ${canvas_conversion_event.canvas_conversion_behavior_id} = ${canvas_conversion_behavior.id} ;;

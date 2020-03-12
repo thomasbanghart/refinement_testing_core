@@ -158,6 +158,7 @@ view: subscription_event_core {
 
   dimension_group: time {
     label: "Subscription Event"
+    group_label: "Dates"
     type: time
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.time) ;;
     timeframes: [
@@ -176,6 +177,7 @@ view: subscription_event_core {
   dimension: timezone {
     type: string
     sql: ${TABLE}.timezone ;;
+    hidden: yes
     description: "IANA timezone of the user at the time of the event"
   }
 

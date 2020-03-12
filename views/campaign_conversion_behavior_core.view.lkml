@@ -36,6 +36,7 @@ view: campaign_conversion_behavior_core {
 
   dimension: conversion_behavior {
     type: string
+    hidden: yes
     sql: ${TABLE}.conversion_behavior ;;
     description: "JSON-encoded string describing the conversion behavior"
   }

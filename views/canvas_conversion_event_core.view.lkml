@@ -113,7 +113,7 @@ view: canvas_conversion_event_core {
 
   measure: conversion_rate {
     type: number
-    sql: ${count} / NULLIF(${canvas.estimated_audience},0) ;;
+    sql: ${count} / NULLIF(${canvas.estimated_impressions},0) ;;
     value_format_name: percent_1
   }
 

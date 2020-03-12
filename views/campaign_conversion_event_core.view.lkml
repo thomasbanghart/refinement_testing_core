@@ -52,6 +52,7 @@ view: campaign_conversion_event_core {
 
   dimension: conversion_behavior_index {
     type: number
+    hidden: yes
     sql: ${TABLE}.conversion_behavior_index ;;
     description: "index of the conversion behavior"
   }
@@ -78,7 +79,7 @@ view: campaign_conversion_event_core {
   }
 
   dimension_group: time {
-    label: ""
+    label: "Campaign Conversion"
     type: time
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.time) ;;
     timeframes: [
@@ -97,6 +98,7 @@ view: campaign_conversion_event_core {
   dimension: timezone {
     type: string
     sql: ${TABLE}.timezone ;;
+    hidden: yes
     description: "IANA timezone of the user at the time of the event"
   }
 
@@ -109,7 +111,7 @@ view: campaign_conversion_event_core {
 
   measure: count {
     type: count
-    label: "Camapign Conversions"
+    label: "Campaign Conversions"
     drill_fields: [id, message_variation.name, message_variation.id, campaign.name, campaign.id]
   }
 
