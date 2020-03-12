@@ -1769,7 +1769,7 @@
     "fk_args": {
       "elements": "[Subscribed, Unsubscribed]"
     },
-    "bq_type": "STRING",
+    "bq_type": "STRING"
   },
   {
     "table_name": "SUBSCRIPTION_EVENT",
