@@ -1631,8 +1631,10 @@
     "field_name": "platform",
     "dataset": "brazedev",
     "dist": "random",
-    "fk_type": "safe_color_name",
-    "fk_args": {},
+    "fk_type": "random_element",
+    "fk_args": {
+      "elements": "[iOS, Android, Web, Other]"
+    },
     "bq_type": "STRING"
   },
   {
