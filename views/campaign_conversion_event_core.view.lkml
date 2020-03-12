@@ -41,6 +41,7 @@ view: campaign_conversion_event_core {
       raw,
       date,
       week,
+      week_of_year,
       month,
       quarter,
       year,
@@ -86,6 +87,7 @@ view: campaign_conversion_event_core {
       raw,
       date,
       week,
+      week_of_year,
       month,
       quarter,
       year,
@@ -133,5 +135,10 @@ view: campaign_conversion_event_core {
     type: number
     sql: ${campaign_conversion_event.count} / NULLIF(${campaign.estimated_audience},0) ;;
     value_format_name: percent_1
+  }
+
+  measure: conversion_running_total {
+    type: running_total
+    sql: ${count} ;;
   }
 }

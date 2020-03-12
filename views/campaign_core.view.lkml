@@ -134,6 +134,7 @@ view: campaign_core {
       raw,
       date,
       week,
+      week_of_year,
       month,
       quarter,
       year,
@@ -141,6 +142,25 @@ view: campaign_core {
       fiscal_quarter,
       fiscal_quarter_of_year,
       fiscal_year]
+  }
+
+  dimension_group: today {
+    type: time
+    sql: CURRENT_TIMESTAMP() ;;
+    timeframes:
+    [
+      raw,
+      date,
+      week,
+      week_of_year,
+      month,
+      quarter,
+      year,
+      fiscal_month_num,
+      fiscal_quarter,
+      fiscal_quarter_of_year,
+      fiscal_year
+    ]
   }
 
   measure: count {

@@ -99,4 +99,9 @@ view: campaign_enrollment_event_core {
     label: "Campaign Enrollments"
     drill_fields: [id, message_variation.name, message_variation.id, campaign.name, campaign.id]
   }
+
+  measure: enrollment_running_total {
+    type: running_total
+    sql: ${count} ;;
+  }
 }
