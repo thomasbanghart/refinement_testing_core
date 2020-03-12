@@ -634,7 +634,7 @@
     "table_name": "CANVAS_CONVERSION_EVENT",
     "field_name": "canvas_conversion_behavior_id",
     "dataset": "brazedev",
-    "from": "CANVAS_CONVERSION_BEHAVIOR.conversion_behavior",
+    "from": "CANVAS_CONVERSION_BEHAVIOR.id",
     "dist": "fk"
   },
   {

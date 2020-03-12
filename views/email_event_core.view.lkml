@@ -206,7 +206,7 @@ view: email_event_core {
   measure: count {
     group_label:"Email"
     type: count
-    label: "Total Impressions"
+    label: "Total Email Impressions"
     value_format_name: decimal_0
     drill_fields: [detail*]
   }
