@@ -47,6 +47,7 @@ explore: campaign_core {
     view_label: "In-App Message Device"
     from: device
     sql_on: ${in_app_message_event.device_id} = ${in_app_message_device.id} ;;
+    relationship: many_to_one
   }
   join: push_notification_event {
     view_label: "Campaign Events"
@@ -59,6 +60,7 @@ explore: campaign_core {
     view_label: "Push Notification Device"
     from: device
     sql_on: ${push_notification_event.device_id} = ${push_device.id} ;;
+    relationship: many_to_one
   }
   join: campaign_enrollment_event {
     view_label: "Campaign Events"
@@ -93,6 +95,74 @@ explore: campaign_core {
     view_label: "Campaign"
     fields: [message_variation.channel, message_variation.id]
     sql_on: ${campaign.id} = ${message_variation.campaign_id} ;;
+    relationship: one_to_many
+  }
+  join: card {
+    sql_on: ${in_app_message_event.card_id} = ${card.id} ;;
+#       AND ${in_app_message_event.card_updated_at} = ${card.updated_at}
+#     ;;
+    relationship: many_to_one
+  }
+  join: newsfeed_card_event {
+    view_label: "Device Events"
+    sql_on: ${card.id} = ${newsfeed_card_event.card_id} ;;
+#       AND ${card.updated_at} = ${newsfeed_card_event.card_updated_at}
+#     ;;
+    relationship: many_to_one
+  }
+  join: card_extra {
+    view_label: "Card Extra"
+    sql_on: ${card.id} = ${card_extra.card_id} ;;
+#       AND ${card.updated_at} = ${card_extra.card_updated_at}
+#     ;;
+    relationship: many_to_one
+  }
+  join: card_tag {
+    view_label: "Card Extra"
+    sql_on: ${card.id} = ${card_tag.card_id} ;;
+#       AND ${card.updated_at} = ${card_tag.card_updated_at}
+#     ;;
+    relationship: many_to_one
+  }
+  join: device {
+    sql_on: ${newsfeed_card_event.device_id} = ${device.id} ;;
+    relationship: many_to_one
+  }
+  join: custom_event {
+    view_label: "Device Events"
+    sql_on: ${device.id} = ${custom_event.device_id} ;;
+    relationship: one_to_many
+  }
+  join: purchase_event {
+    view_label: "Device Events"
+    sql_on: ${device.id} = ${purchase_event.device_id} ;;
+    relationship: one_to_many
+  }
+  join: location_event {
+    view_label: "Device Events"
+    sql_on: ${device.id} = ${location_event.device_id} ;;
+    relationship: one_to_many
+  }
+  join: session_event {
+    view_label: "Device Events"
+    sql_on: ${device.id} = ${session_event.device_id} ;;
+    relationship: one_to_many
+  }
+  join: newsfeed_impression_event {
+    view_label: "Device Events"
+    sql_on: ${device.id} = ${custom_event.device_id} ;;
+    relationship: one_to_many
+  }
+  join: in_app_message_event2 {
+    view_label: "Device Events"
+    from: in_app_message_event
+    sql_on: ${device.id} = ${in_app_message_event2.device_id} ;;
+    relationship: one_to_many
+  }
+  join: push_notification_event2 {
+    view_label: "Device Events"
+    from: push_notification_event
+    sql_on: ${device.id} = ${push_notification_event2.device_id} ;;
     relationship: one_to_many
   }
 }
