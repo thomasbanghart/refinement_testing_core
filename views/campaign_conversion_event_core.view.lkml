@@ -113,6 +113,19 @@ view: campaign_conversion_event_core {
     drill_fields: [id, message_variation.name, message_variation.id, campaign.name, campaign.id]
   }
 
+  measure: count_email_conversions {
+    type: count
+    label: "Email Conversions"
+    drill_fields: [id, message_variation.name, message_variation.id, campaign.name, campaign.id]
+    filters: [message_variation.channel: "email"]
+  }
+
+  measure: count_push_notification_conversions {
+    type: count
+    label: "Push Notification Conversions"
+    drill_fields: [id, message_variation.name, message_variation.id, campaign.name, campaign.id]
+    filters: [message_variation.channel: "ios_push"]
+  }
 
   measure: conversion_rate {
     type: number

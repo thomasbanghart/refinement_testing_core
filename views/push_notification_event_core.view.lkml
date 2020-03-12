@@ -112,10 +112,11 @@ view: push_notification_event_core {
   }
 
   dimension: event_type {
+    group_label: "Push Notification"
     type: string
     label: "Push Notification Event Type"
     sql: ${TABLE}.event_type ;;
-    description: "type of push event: Send, Open, IOS Foreground, Bounce"
+    description: "type of push event: Send, Open, iOS Foreground, Bounce"
   }
 
   dimension: external_user_id {
@@ -157,8 +158,8 @@ view: push_notification_event_core {
   }
 
   dimension_group: time {
-    label: "Push Notification Event"
-    group_label: "Dates"
+    label: "Push Notification"
+    group_label: "Push Notification Date"
     type: time
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.time) ;;
     timeframes: [
@@ -168,10 +169,13 @@ view: push_notification_event_core {
       month,
       quarter,
       year,
+      day_of_week,
+      hour_of_day,
       fiscal_month_num,
       fiscal_quarter,
       fiscal_quarter_of_year,
-      fiscal_year]
+      fiscal_year
+      ]
   }
 
   dimension: timezone {
@@ -189,10 +193,58 @@ view: push_notification_event_core {
 
   measure: count {
     type: count
+    group_label: "Push Notifications"
     label: "Push Notifications"
     value_format_name: decimal_0
     drill_fields: [detail*]
   }
+
+  measure: total_sent {
+    group_label: "Push Notifications"
+    type: count
+    #filters: [ event_type: "Send"]
+    filters: [event_type: "olive, aqua, black, white, teal"]
+    value_format_name: decimal_0
+  }
+
+  measure: total_open {
+    group_label: "Push Notifications"
+    type: count
+    #filters: [ event_type: "Open"]
+    filters: [event_type: "lime, green, navy"]
+    value_format_name: decimal_0
+  }
+
+  measure: total_ios_foreground {
+    group_label: "Push Notifications"
+    type: count
+    filters: [ event_type: "iOS Foreground"]
+    value_format_name: decimal_0
+  }
+
+
+  measure: total_bounces {
+    group_label: "Push Notifications"
+    type: count
+    #filters: [ event_type: "Bounce"]
+    filters: [event_type: "gray"]
+    value_format_name: decimal_0
+  }
+
+  measure: total_delivered {
+    group_label: "Push Notifications"
+    type: number
+    sql: ${total_sent} - ${total_bounces} ;;
+    value_format_name: decimal_0
+  }
+
+  measure: bounce_rate {
+    group_label: "Push Notifications"
+    type: number
+    sql: ${total_bounces} / NULLIF(${total_sent},0) ;;
+    value_format_name: percent_1
+  }
+
 
   set: detail {
     fields: [

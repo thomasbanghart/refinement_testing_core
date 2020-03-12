@@ -133,6 +133,7 @@ view: in_app_message_event_core {
 
   dimension: event_type {
     type: string
+    group_label: "In-App Message"
     label: "In-App Message Event Type"
     sql: ${TABLE}.event_type ;;
     description: "type of In-App Message event: Impression, Click"
@@ -177,8 +178,8 @@ view: in_app_message_event_core {
   }
 
   dimension_group: time {
-    label: "In App Message Event"
-    group_label: "Dates"
+    label: "In App Message"
+    group_label: "In-App Message Dates"
     type: time
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.time) ;;
     timeframes: [
@@ -210,6 +211,7 @@ view: in_app_message_event_core {
 
   measure: count {
     type: count
+    group_label: "In-App Message"
     label: "In App Message Events"
     drill_fields: [detail*]
     value_format_name: decimal_0

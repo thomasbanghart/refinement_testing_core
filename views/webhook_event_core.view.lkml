@@ -136,7 +136,7 @@ view: webhook_event_core {
 
   dimension_group: time {
     label: "Webhook Event"
-    group_label: "Dates"
+    group_label: "Webhook Event Dates"
     type: time
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.time) ;;
     timeframes: [
@@ -167,6 +167,7 @@ view: webhook_event_core {
   }
 
   measure: count {
+    group_label: "Webhook Event"
     type: count
     label: "Webhook Events"
     drill_fields: [detail*]

@@ -65,7 +65,7 @@ view: campaign_enrollment_event_core {
   dimension_group: time {
     label: "Campaign Enrollment"
     type: time
-    group_label: "Dates"
+    group_label: "Campaign Enrollment Dates"
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.time) ;;
     timeframes: [
       raw,

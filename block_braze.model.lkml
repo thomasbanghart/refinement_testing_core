@@ -43,12 +43,22 @@ explore: campaign_core {
 #     ;;
     relationship: one_to_many
   }
+  join: in_app_message_device {
+    view_label: "In-App Message Device"
+    from: device
+    sql_on: ${in_app_message_event.device_id} = ${in_app_message_device.id} ;;
+  }
   join: push_notification_event {
     view_label: "Campaign Events"
     sql_on: ${campaign.id} = ${push_notification_event.campaign_id} ;;
 #       AND ${campaign.updated_at} = ${push_notification_event.campaign_updated_at}
 #     ;;
     relationship: one_to_many
+  }
+  join: push_device {
+    view_label: "Push Notification Device"
+    from: device
+    sql_on: ${push_notification_event.device_id} = ${push_device.id} ;;
   }
   join: campaign_enrollment_event {
     view_label: "Campaign Events"
@@ -80,7 +90,7 @@ explore: campaign_core {
   }
   join: message_variation {
     view_label: "Campaign"
-    fields: [message_variation.channel]
+    fields: [message_variation.channel, message_variation.id]
     sql_on: ${campaign.id} = ${message_variation.campaign_id} ;;
     relationship: one_to_many
   }

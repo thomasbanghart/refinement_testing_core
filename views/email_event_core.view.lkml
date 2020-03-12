@@ -98,12 +98,14 @@ view: email_event_core {
   }
 
   dimension: email_address {
+    group_label: "Email"
     type: string
     sql: ${TABLE}.email_address ;;
     description: "email address for this event"
   }
 
   dimension: event_type {
+    group_label: "Email"
     type: string
     sql: ${TABLE}.event_type ;;
     description: "type of email event: Send, Delivery, Open, Clicks, Bounce, SoftBounce, MarkAsSpam, Unsubscribe"
@@ -148,14 +150,15 @@ view: email_event_core {
   }
 
   dimension: sending_ip {
+    group_label: "Email"
     type: string
     sql: ${TABLE}.sending_ip ;;
     description: "the IP address from which the message was sent (Email Delivery, Bounce, and SoftBounce events only)"
   }
 
   dimension_group: time {
-    label: "Email Event"
-    group_label: "Dates"
+    group_label: "Email Dates"
+    label: "Email"
     type: time
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.time) ;;
     timeframes: [
@@ -179,6 +182,7 @@ view: email_event_core {
   }
 
   dimension: url {
+    group_label: "Email"
     type: string
     label: "Email Click URL"
     sql: ${TABLE}.url ;;
@@ -186,6 +190,7 @@ view: email_event_core {
   }
 
   dimension: user_agent {
+    group_label: "Email"
     type: string
     sql: ${TABLE}.user_agent ;;
     description: "description of the user's system and browser for the event (Click, Open, and MarkAsSpam events only)"
@@ -199,6 +204,7 @@ view: email_event_core {
   }
 
   measure: count {
+    group_label:"Email"
     type: count
     label: "Total Impressions"
     value_format_name: decimal_0
@@ -206,54 +212,63 @@ view: email_event_core {
   }
 
   measure: total_sent {
+    group_label: "Email"
     type: count
     filters: [ event_type: "Send"]
     value_format_name: decimal_0
   }
 
   measure: total_clicks {
+    group_label: "Email"
     type: count
     filters: [ event_type: "Clicks"]
     value_format_name: decimal_0
   }
 
   measure: total_delivered {
+    group_label: "Email"
     type: count
     filters: [ event_type: "Delivery"]
     value_format_name: decimal_0
   }
 
   measure: total_marked_as_spam {
+    group_label: "Email"
     type: count
     filters: [ event_type: "MarkAsSpam"]
     value_format_name: decimal_0
   }
 
   measure: total_unsubscribed {
+    group_label: "Email"
     type: count
     filters: [ event_type: "Unsubscribe"]
     value_format_name: decimal_0
   }
 
   measure: total_bounces {
+    group_label: "Email"
     type: count
     filters: [ event_type: "Bounce"]
     value_format_name: decimal_0
   }
 
   measure: total_opened {
+    group_label: "Email"
     type: count
     filters: [ event_type: "Open"]
     value_format_name: decimal_0
   }
 
   measure: bounce_rate {
+    group_label: "Email"
     type: number
     sql: ${total_bounces} / NULLIF(${total_sent},0) ;;
     value_format_name: percent_1
   }
 
   measure: click_rate {
+    group_label: "Email"
     type: number
     sql: ${total_clicks} / NULLIF(${total_delivered},0) ;;
     value_format_name: percent_1
