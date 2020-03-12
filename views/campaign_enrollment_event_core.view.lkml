@@ -71,6 +71,7 @@ view: campaign_enrollment_event_core {
       raw,
       date,
       week,
+      week_of_year,
       month,
       quarter,
       year,
