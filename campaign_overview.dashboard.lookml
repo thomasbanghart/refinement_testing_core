@@ -271,7 +271,7 @@
     model: block_braze
     explore: campaign
     type: looker_column
-    fields: [email_event.sent_emails, email_event.total_delivered, email_event.total_opened,
+    fields: [email_event.total_sent, email_event.total_delivered, email_event.total_opened,
       email_event.total_clicks]
     limit: 500
     query_timezone: America/Los_Angeles
