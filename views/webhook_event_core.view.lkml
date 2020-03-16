@@ -135,8 +135,8 @@ view: webhook_event_core {
   }
 
   dimension_group: time {
+    group_label: "Dates"
     label: "Webhook Event"
-    group_label: "Webhook Event Dates"
     type: time
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.time) ;;
     timeframes: [

@@ -157,7 +157,7 @@ view: email_event_core {
   }
 
   dimension_group: time {
-    group_label: "Email Dates"
+    group_label: "Dates"
     label: "Email"
     type: time
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.time) ;;

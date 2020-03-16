@@ -12,6 +12,7 @@ view: message_variation_core {
   drill_fields: [id]
 
   dimension: id {
+    hidden: yes
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
@@ -52,6 +53,7 @@ view: message_variation_core {
   }
 
   dimension: channel {
+    hidden: yes
     label: "Channel Type"
     type: string
     sql: ${TABLE}.channel ;;

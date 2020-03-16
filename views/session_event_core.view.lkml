@@ -40,6 +40,13 @@ view: session_event_core {
     description: "seconds session lasted"
   }
 
+  dimension: duration_tier {
+    sql: ${duration}/60 ;;
+    type: tier
+    style: integer
+    tiers: [0, 15, 30, 45, 60, 75, 90, 105, 120]
+  }
+
   dimension: event_type {
     type: string
     label: "Session Type"

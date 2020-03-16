@@ -13,6 +13,8 @@ view: campaign_stats_core {
       column: conversions { field: campaign_conversion_event.count }
       column: estimated_audience {}
       column: name {}
+      column: push_bounces { field: push_notification_event.total_bounces }
+      column: email_bounces { field: email_event.total_bounces }
       column: campaign_id { field: campaign.id }
       column: enrollment { field: campaign_enrollment_event.count }
       column: subscriptions { field: subscription_event.count }
@@ -61,7 +63,7 @@ view: campaign_stats_core {
     type: number
   }
 
-  dimension: subscription {
+  dimension: subscriptions {
     hidden: yes
     type: number
   }
@@ -69,6 +71,26 @@ view: campaign_stats_core {
   dimension: days_time_to_conversion {
     hidden: yes
     type: number
+  }
+
+  dimension: push_bounces {}
+
+  dimension: email_bounces {}
+
+  measure: average_bounces {
+    group_label: "Average Metrics"
+    label: "Average Bounce Rate"
+    type: number
+    sql: SUM(${push_bounces} + ${email_bounces})/SUM(${estimated_audience}) ;;
+    value_format_name: percent_1
+  }
+
+  measure: average_subscriptions {
+    group_label: "Average Metrics"
+    label: "Average Subscriptions"
+    type: average
+    sql: ${subscriptions} ;;
+    value_format_name: decimal_1
   }
 
   measure: conversion_rate {
