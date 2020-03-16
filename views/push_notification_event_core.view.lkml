@@ -112,7 +112,6 @@ view: push_notification_event_core {
   }
 
   dimension: event_type {
-    group_label: "Push Notification"
     type: string
     label: "Push Notification Event Type"
     sql: ${TABLE}.event_type ;;
@@ -159,7 +158,7 @@ view: push_notification_event_core {
 
   dimension_group: time {
     label: "Push Notification"
-    group_label: "Push Notification Date"
+    group_label: "Dates"
     type: time
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.time) ;;
     timeframes: [
@@ -180,6 +179,7 @@ view: push_notification_event_core {
 
   dimension: timezone {
     type: string
+    hidden: yes
     sql: ${TABLE}.timezone ;;
     description: "IANA timezone of the user at the time of the event"
   }
