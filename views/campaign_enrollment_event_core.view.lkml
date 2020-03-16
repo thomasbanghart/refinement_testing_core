@@ -95,6 +95,13 @@ view: campaign_enrollment_event_core {
     description:"braze user id of the user"
   }
 
+  dimension_group: to_conversion {
+    type: duration
+    sql_start: ${time_raw} ;;
+    sql_end: ${campaign_conversion_event.time_raw} ;;
+    intervals: [day]
+  }
+
   measure: count {
     type: count
     label: "Campaign Enrollments"

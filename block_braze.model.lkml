@@ -165,6 +165,13 @@ explore: campaign_core {
     sql_on: ${device.id} = ${push_notification_event2.device_id} ;;
     relationship: one_to_many
   }
+
+  join: campaign_stats {
+    view_label: "Campaign"
+    sql_on: ${campaign.updated_raw} = ${campaign_stats.updated_raw} ;;
+    relationship: one_to_one
+    type: full_outer
+  }
 }
 
 explore: canvas {
