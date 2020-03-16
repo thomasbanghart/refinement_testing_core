@@ -118,6 +118,10 @@ view: campaign_core {
     type: string
     sql: ${TABLE}.name ;;
     description: "campaign name"
+    link: {
+      label: "Campaign Lookup Dashboard"
+      url: "/dashboards/block_braze::campaign_lookup?Campaign Name={{ value }}"
+    }
   }
 
   dimension: schedule_type {
