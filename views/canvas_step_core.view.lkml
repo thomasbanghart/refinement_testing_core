@@ -19,7 +19,7 @@ view: canvas_step_core {
   }
 
   dimension: canvas_id {
-    hidden: yes
+#     hidden: yes
     type: number
     sql: ${TABLE}.canvas_id ;;
     description: "id of the Canvas if from a canvas"
