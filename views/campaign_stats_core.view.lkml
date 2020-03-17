@@ -77,6 +77,12 @@ view: campaign_stats_core {
 
   dimension: email_bounces {}
 
+  measure: num_of_campaigns {
+    hidden: yes
+    type: count_distinct
+    sql: ${campaign_id} ;;
+  }
+
   measure: average_bounces {
     group_label: "Average Metrics"
     label: "Average Bounce Rate"
@@ -88,8 +94,8 @@ view: campaign_stats_core {
   measure: average_subscriptions {
     group_label: "Average Metrics"
     label: "Average Subscriptions"
-    type: average
-    sql: ${subscriptions} ;;
+    type: number
+    sql: SUM(${subscriptions})/${num_of_campaigns} ;;
     value_format_name: decimal_1
   }
 
@@ -104,17 +110,17 @@ view: campaign_stats_core {
   measure: average_conversions {
     group_label: "Average Metrics"
     label: "Average Number of Conversion Events"
-    type: average
-    sql: (${conversions}) ;;
+    type: number
+    sql: SUM(${conversions})/${num_of_campaigns} ;;
     value_format_name: decimal_1
   }
 
   measure: average_estimated_audience {
     group_label: "Average Metrics"
     label: "Average Estimated Audience"
-    type: average
-    sql: (${estimated_audience}) ;;
-    value_format_name: decimal_1
+    type: number
+    sql: SUM(${estimated_audience})/${num_of_campaigns} ;;
+    value_format_name: decimal_0
   }
 
   measure: average_days_to_conversion {
