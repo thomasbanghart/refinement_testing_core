@@ -128,6 +128,7 @@ view: campaign_stats_core {
     label: "Average Number of Days Until Conversion Event"
     type: average
     sql: (${days_time_to_conversion}) ;;
+    value_format_name: decimal_0
   }
 
 }
