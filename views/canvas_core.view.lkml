@@ -168,6 +168,7 @@ view: canvas_core {
   }
 
   measure: estimated_impressions {
+    label: "Impressions"
     type: number
     sql: ${email_event.count} + ${subscription_event.count} + ${webhook_event.count} + ${subscription_event.count}
         + ${in_app_message_event.count} + ${push_notification_event.count};;
