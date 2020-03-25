@@ -98,7 +98,7 @@ explore: campaign_core {
 
   join: message_variation {
     view_label: "Campaign"
-    fields: [message_variation.channel, message_variation.id]
+    #fields: [message_variation.channel, message_variation.id]
     sql_on: ${campaign.id} = ${message_variation.campaign_id} ;;
     relationship: one_to_many
   }

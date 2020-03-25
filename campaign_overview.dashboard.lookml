@@ -160,7 +160,7 @@
     fields: [campaign.name, campaign_conversion_event.conversion_rate]
     filters:
       campaign.archived: 'No'
-    sorts: [campaign_conversion_event.conversion_rate desc]
+    s: [campaign_conversion_event.conversion_rate desc]
     limit: 10
     column_limit: 50
     x_axis_gridlines: false
@@ -324,7 +324,7 @@
     fields: [device.platform, campaign.estimated_audience, campaign_conversion_event.conversion_rate]
     filters:
       device.platform: "-NULL"
-    sorts: [campaign.estimated_audience desc]
+    s: [campaign.estimated_audience desc]
     limit: 500
     column_limit: 50
     dynamic_fields: [{table_calculation: conversion_rate, label: Conversion Rate,
@@ -407,7 +407,7 @@
     filters:
       campaign.channel: "-NULL"
       campaign_conversion_event.time_date: 6 months
-    sorts: [campaign_conversion_event.time_date desc, campaign.channel]
+    s: [campaign_conversion_event.time_date desc, campaign.channel]
     limit: 500
     column_limit: 50
     x_axis_gridlines: false
@@ -479,7 +479,7 @@
     fields: [campaign.channel, campaign.estimated_audience, campaign_conversion_event.conversion_rate]
     filters:
       campaign.channel: "-NULL"
-    sorts: [campaign.estimated_audience desc]
+    s: [campaign.estimated_audience desc]
     limit: 500
     column_limit: 50
     x_axis_gridlines: false
@@ -551,7 +551,7 @@
     fields: [email_event.time_date, email_event.count, email_event.total_clicks, campaign_conversion_event.conversion_rate]
     filters:
       email_event.time_date: 3 months
-    sorts: [email_event.time_date desc]
+    s: [email_event.time_date desc]
     limit: 500
     dynamic_fields: [{table_calculation: impressions, label: Impressions, expression: 'if(
           ${campaign_conversion_event.conversion_rate}  = null, 1, 1) + rand() * 500
@@ -638,7 +638,7 @@
       email_event.total_clicks, campaign_conversion_event.count]
     filters:
       campaign.archived: 'No'
-    sorts: [campaign.created_date desc]
+    s: [campaign.created_date desc]
     limit: 500
     column_limit: 50
     show_view_names: false

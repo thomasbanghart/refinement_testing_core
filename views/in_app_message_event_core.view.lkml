@@ -126,7 +126,7 @@ view: in_app_message_event_core {
 
   dimension: device_id {
     type: number
-    hidden: yes
+    hidden: no
     sql: ${TABLE}.device_id ;;
     description: "id of the device on which the event occurred"
   }
