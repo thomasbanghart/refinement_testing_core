@@ -1,0 +1,35 @@
+{
+  "label": "Braze",
+  "category_label": "Models",
+  "branding": {
+    "image_uri": "https://marketplace-api.looker.com/block-icons/braze_icon.png",
+    "tagline": "Follow the customer journey, from first impression to conversion, with the Braze block."
+  },
+
+  "constants": {
+    "CONNECTION_NAME": {
+      "label": "Connection Name",
+      "value_constraint": "connection"
+    },
+    "SCHEMA_NAME": {
+      "label": "Braze Schema Name"
+    },
+    "CONFIG_PROJECT_NAME": {
+      "label": "Config Project Name"
+    }
+  },
+  "models": [
+    {
+      "name": "block_braze",
+      "connection_constant": "CONNECTION_NAME"
+    }
+  ],
+  "auxiliary_projects": [
+    {
+      "git_uri": "git://github.com/looker/block-braze-config.git",
+      "git_ref": "{ TODO: ADD GIT REF }",
+      "label": "Braze Config",
+      "constant_name": "CONFIG_PROJECT_NAME"
+    }
+  ]
+}
