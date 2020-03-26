@@ -1,4 +1,4 @@
-project_name: "block-braze"
+project_name: "generic_block"
 
 ################ Constants ################
 
