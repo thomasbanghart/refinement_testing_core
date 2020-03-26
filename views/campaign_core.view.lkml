@@ -8,7 +8,7 @@ view: campaign {
 ###################################################
 
 view: campaign_core {
-  sql_table_name: brazedev.CAMPAIGN ;;
+  sql_table_name: CAMPAIGN ;;
   drill_fields: [id]
 
   dimension: id {

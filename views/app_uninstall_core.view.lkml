@@ -8,7 +8,7 @@ view: app_uninstall {
 ###################################################
 
 view: app_uninstall_core {
-  sql_table_name: brazedev.APP_UNINSTALL ;;
+  sql_table_name: APP_UNINSTALL ;;
   drill_fields: [id]
 
   dimension: id {

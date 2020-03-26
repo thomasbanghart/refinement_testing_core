@@ -8,7 +8,7 @@ view: canvas_conversion_behavior {
 ###################################################
 
 view: canvas_conversion_behavior_core {
-  sql_table_name: brazedev.CANVAS_CONVERSION_BEHAVIOR
+  sql_table_name: CANVAS_CONVERSION_BEHAVIOR
     ;;
   drill_fields: [id]
 

@@ -8,7 +8,7 @@ view: card_tag {
 ###################################################
 
 view: card_tag_core {
-  sql_table_name: brazedev.CARD_TAG ;;
+  sql_table_name: CARD_TAG ;;
 
   dimension: card_id {
     type: number

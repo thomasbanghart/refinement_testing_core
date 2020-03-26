@@ -8,7 +8,7 @@ view: campaign_conversion_behavior {
 ###################################################
 
 view: campaign_conversion_behavior_core {
-  sql_table_name: brazedev.CAMPAIGN_CONVERSION_BEHAVIOR ;;
+  sql_table_name: CAMPAIGN_CONVERSION_BEHAVIOR ;;
 
   dimension: campaign_id {
     type: number

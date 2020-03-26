@@ -8,7 +8,7 @@ view: webhook_event {
 ###################################################
 
 view: webhook_event_core {
-  sql_table_name: brazedev.WEBHOOK_EVENT ;;
+  sql_table_name: WEBHOOK_EVENT ;;
   drill_fields: [id]
 
   dimension: id {

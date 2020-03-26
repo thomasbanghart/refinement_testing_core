@@ -8,7 +8,7 @@ view: canvas_entry_event {
 ###################################################
 
 view: canvas_entry_event_core {
-  sql_table_name: brazedev.CANVAS_ENTRY_EVENT ;;
+  sql_table_name: CANVAS_ENTRY_EVENT ;;
   drill_fields: [id]
 
   dimension: id {

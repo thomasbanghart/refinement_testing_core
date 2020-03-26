@@ -8,7 +8,7 @@ view: newsfeed_card_event {
 ###################################################
 
 view: newsfeed_card_event_core {
-  sql_table_name: brazedev.NEWSFEED_CARD_EVENT ;;
+  sql_table_name: NEWSFEED_CARD_EVENT ;;
   drill_fields: [id]
 
   dimension: id {
