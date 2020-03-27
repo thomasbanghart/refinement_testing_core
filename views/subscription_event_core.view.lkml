@@ -191,7 +191,7 @@ view: subscription_event_core {
   measure: count {
     type: count
     label: "Subscriptions"
-    filters: [subscription_status: "Subscribed"]
+    #filters: [subscription_status: "Subscribed"]
     value_format_name: decimal_0
     drill_fields: [detail*]
   }
