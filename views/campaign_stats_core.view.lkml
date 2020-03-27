@@ -23,7 +23,7 @@ view: campaign_stats_core {
       filters: [campaign.estimated_audience: "NOT NULL"]
     }
 
-    sql_trigger_value: SELECT CURRENT_DATE() ;;
+    # sql_trigger_value: SELECT CURRENT_DATE() ;;
   }
 
   dimension: id {

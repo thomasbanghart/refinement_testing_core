@@ -1,4 +1,4 @@
- connection:"brick-layer"             # include all views in the views/ folder in this projectconnection: "@{CONNECTION_NAME}"
+connection:"block_refinement"             # include all views in the views/ folder in this projectconnection: "@{CONNECTION_NAME}"
 label: "🔥 Braze Block"
 
 include: "views/*.view.lkml"

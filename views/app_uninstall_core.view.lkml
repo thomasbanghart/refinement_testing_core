@@ -4,7 +4,7 @@ include: "//@{CONFIG_PROJECT_NAME}/views/app_uninstall.view.lkml"
 view: app_uninstall {
   extends: [app_uninstall_config]
 }
-
+##
 ###################################################
 
 view: app_uninstall_core {

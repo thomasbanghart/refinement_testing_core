@@ -1,9 +1,9 @@
-project_name: "generic_block"
+project_name: "block_refinement_testing"
 
 ################ Constants ################
 
 constant: CONFIG_PROJECT_NAME {
-  value: "block-braze-config"
+  value: "block_refinement_testing_config"
   export: override_required
 }
 
