@@ -1,7 +1,7 @@
 explore: campaign_core {
   from: campaign
   extension: required
-
+#
   join: campaign_stats {
     view_label: "Campaign"
     sql_on: ${campaign.updated_raw} = ${campaign_stats.updated_raw} ;;
