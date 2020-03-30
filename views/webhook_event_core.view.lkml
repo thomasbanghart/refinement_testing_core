@@ -1,13 +1,4 @@
-include: "//@{CONFIG_PROJECT_NAME}/views/webhook_event.view.lkml"
-
-
 view: webhook_event {
-  extends: [webhook_event_config]
-}
-
-###################################################
-
-view: webhook_event_core {
   sql_table_name: WEBHOOK_EVENT ;;
   drill_fields: [id]
 
