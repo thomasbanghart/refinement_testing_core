@@ -1,46 +1,53 @@
-include: "//@{CONFIG_PROJECT_NAME}/views/campaign_stats.view.lkml"
-
 view: campaign_stats {
-  extends: [campaign_stats_config]
-}
-
-############################
-
-view: campaign_stats_core {
   derived_table: {
     explore_source: campaign {
-      column: updated { field: campaign.updated_raw }
-      column: conversions { field: campaign_conversion_event.count }
+      column: updated {
+        field: campaign.updated_raw
+      }
+
+      column: conversions {
+        field: campaign_conversion_event.count
+      }
+
       column: estimated_audience {}
+
       column: name {}
-      column: push_bounces { field: push_notification_event.total_bounces }
-      column: email_bounces { field: email_event.total_bounces }
-      column: campaign_id { field: campaign.id }
-      column: enrollment { field: campaign_enrollment_event.count }
-      column: subscriptions { field: subscription_event.count }
-      column: days_time_to_conversion { field: campaign_enrollment_event.days_to_conversion }
 
-      #filters: [campaign.estimated_audience: "NOT NULL"]
+      column: push_bounces {
+        field: push_notification_event.total_bounces
+      }
+
+      column: email_bounces {
+        field: email_event.total_bounces
+      }
+
+      column: campaign_id {
+        field: campaign.id
+      }
+
+      column: enrollment {
+        field: campaign_enrollment_event.count
+      }
+
+      column: subscriptions {
+        field: subscription_event.count
+      }
+
+      column: days_time_to_conversion {
+        field: campaign_enrollment_event.days_to_conversion
+      }
     }
-
-    # sql_trigger_value: SELECT CURRENT_DATE() ;;
   }
 
   dimension: id {
     primary_key: yes
     hidden: yes
-    sql: CAST(${campaign_id} as STRING) ||' '|| CAST(${updated_raw} as STRING);;
+    sql: CAST(${campaign_id} as STRING) ||' '|| CAST(${updated_raw} as STRING) ;;
   }
 
   dimension: campaign_id {
     hidden: yes
     type: string
-  }
-
-  dimension_group: updated {
-    hidden: yes
-    type: time
-    timeframes: [date, month, raw, time]
   }
 
   dimension: conversions {
@@ -76,6 +83,12 @@ view: campaign_stats_core {
   dimension: push_bounces {}
 
   dimension: email_bounces {}
+
+  dimension_group: updated {
+    hidden: yes
+    type: time
+    timeframes: [date, month, raw, time]
+  }
 
   measure: num_of_campaigns {
     hidden: yes
@@ -130,5 +143,4 @@ view: campaign_stats_core {
     sql: (${days_time_to_conversion}) ;;
     value_format_name: decimal_0
   }
-
 }
