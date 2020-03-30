@@ -1,13 +1,4 @@
-include: "//@{CONFIG_PROJECT_NAME}/views/card.view.lkml"
-
-
 view: card {
-  extends: [card_config]
-}
-
-###################################################
-
-view: card_core {
   sql_table_name: CARD ;;
   drill_fields: [id]
 
@@ -24,22 +15,6 @@ view: card_core {
     description: "whether this Card is archived"
   }
 
-  dimension_group: careated {
-    type: time
-    sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.created_at) ;;
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year,
-      fiscal_month_num,
-      fiscal_quarter,
-      fiscal_quarter_of_year,
-      fiscal_year]
-  }
-
   dimension: description {
     type: string
     sql: ${TABLE}.description ;;
@@ -50,23 +25,6 @@ view: card_core {
     type: yesno
     sql: ${TABLE}.draft ;;
     description: "whether this Card is a draft"
-  }
-
-  dimension_group: ended {
-    type: time
-    sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.ended_at) ;;
-    description: "Date card will stop displaying for users"
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year,
-      fiscal_month_num,
-      fiscal_quarter,
-      fiscal_quarter_of_year,
-      fiscal_year]
   }
 
   dimension: image_url {
@@ -87,6 +45,47 @@ view: card_core {
     description: "Card name"
   }
 
+  dimension: title {
+    type: string
+    sql: ${TABLE}.title ;;
+    description: "The card's title"
+  }
+
+  dimension_group: careated {
+    type: time
+    sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.created_at) ;;
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year,
+      fiscal_month_num,
+      fiscal_quarter,
+      fiscal_quarter_of_year,
+      fiscal_year
+    ]
+  }
+
+  dimension_group: ended {
+    type: time
+    sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.ended_at) ;;
+    description: "Date card will stop displaying for users"
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year,
+      fiscal_month_num,
+      fiscal_quarter,
+      fiscal_quarter_of_year,
+      fiscal_year
+    ]
+  }
+
   dimension_group: published {
     type: time
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.publish_at) ;;
@@ -101,14 +100,8 @@ view: card_core {
       fiscal_month_num,
       fiscal_quarter,
       fiscal_quarter_of_year,
-      fiscal_year]
-  }
-
-
-  dimension: title {
-    type: string
-    sql: ${TABLE}.title ;;
-    description: "The card's title"
+      fiscal_year
+    ]
   }
 
   dimension_group: updated {
@@ -125,7 +118,8 @@ view: card_core {
       fiscal_month_num,
       fiscal_quarter,
       fiscal_quarter_of_year,
-      fiscal_year]
+      fiscal_year
+    ]
   }
 
   measure: count {
