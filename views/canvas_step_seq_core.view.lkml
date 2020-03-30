@@ -1,13 +1,4 @@
-include: "//@{CONFIG_PROJECT_NAME}/views/canvas_step_seq.view.lkml"
-
-
 view: canvas_step_seq {
-  extends: [canvas_step_seq_config]
-}
-
-###################################################
-
-view: canvas_step_seq_core {
   sql_table_name: CANVAS_STEP_SEQ ;;
 
   dimension: canvas_id {
@@ -27,8 +18,7 @@ view: canvas_step_seq_core {
     hidden: yes
     type: time
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.canvas_updated_at) ;;
-    timeframes:
-    [
+    timeframes: [
       raw,
       date,
       week,
