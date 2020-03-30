@@ -1,13 +1,4 @@
-include: "//@{CONFIG_PROJECT_NAME}/views/purchase_event.view.lkml"
-
-
 view: purchase_event {
-  extends: [purchase_event_config]
-}
-
-###################################################
-
-view: purchase_event_core {
   sql_table_name: PURCHASE_EVENT ;;
   drill_fields: [id]
 
@@ -67,6 +58,13 @@ view: purchase_event_core {
     description: "JSON encoded string of the custom properties for this event"
   }
 
+  dimension: user_id {
+    type: number
+    hidden: yes
+    sql: ${TABLE}.user_id ;;
+    description: "braze user id of the user"
+  }
+
   dimension_group: time {
     label: "Purchase Event"
     group_label: "Dates"
@@ -82,14 +80,8 @@ view: purchase_event_core {
       fiscal_month_num,
       fiscal_quarter,
       fiscal_quarter_of_year,
-      fiscal_year]
-  }
-
-  dimension: user_id {
-    type: number
-    hidden: yes
-    sql: ${TABLE}.user_id ;;
-    description: "braze user id of the user"
+      fiscal_year
+    ]
   }
 
   measure: count {
