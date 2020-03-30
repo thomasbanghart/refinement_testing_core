@@ -1,13 +1,13 @@
-include: "//@{CONFIG_PROJECT_NAME}/views/campaign.view.lkml"
+#include: "//@{CONFIG_PROJECT_NAME}/views/campaign.view.lkml"
 
+#
+# view: campaign {
+#   extends: [campaign_config]
+# }
+#
+# ###################################################
 
 view: campaign {
-  extends: [campaign_config]
-}
-
-###################################################
-
-view: campaign_core {
   sql_table_name: CAMPAIGN ;;
   drill_fields: [id]
 

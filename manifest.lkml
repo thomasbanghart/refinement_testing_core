@@ -8,7 +8,7 @@ constant: CONFIG_PROJECT_NAME {
 }
 
 constant: CONNECTION_NAME {
-  value: "brick-layer"
+  value: "block_refinement"
   export: override_required
 }
 

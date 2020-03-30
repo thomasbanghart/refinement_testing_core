@@ -1,10 +1,11 @@
-connection:"block_refinement"             # include all views in the views/ folder in this projectconnection: "@{CONNECTION_NAME}"
+connection:"@{CONNECTION_NAME}"             # include all views in the views/ folder in this projectconnection: "@{CONNECTION_NAME}"
 label: "🔥 Braze Block"
 
 include: "views/*.view.lkml"
 include: "*.explore.lkml"
-# include: "*.dashboard.lookml"
 include: "//@{CONFIG_PROJECT_NAME}/views/*.view.lkml"
+# include: "*.dashboard.lookml"
+
 include: "//@{CONFIG_PROJECT_NAME}/*.model.lkml"
 # include: "//@{CONFIG_PROJECT_NAME}/*.dashboard"
 
