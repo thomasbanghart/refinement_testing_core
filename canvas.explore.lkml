@@ -1,6 +1,6 @@
-explore: canvas_core {
-  from: canvas
-  extension: required
+include: "/views/*"
+
+explore: canvas {
   join: subscription_event {
 #     view_label: "Campaign Events"
   sql_on: ${canvas.id} = ${subscription_event.canvas_id} ;;

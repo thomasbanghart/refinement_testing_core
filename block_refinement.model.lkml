@@ -3,16 +3,4 @@ label: "🔥 Braze Block"
 
 include: "views/*.view.lkml"
 include: "*.explore.lkml"
-include: "//@{CONFIG_PROJECT_NAME}/views/*.view.lkml"
-# include: "*.dashboard.lookml"
-
-include: "//@{CONFIG_PROJECT_NAME}/*.model.lkml"
-# include: "//@{CONFIG_PROJECT_NAME}/*.dashboard"
-
-explore: campaign {
-  extends: [campaign_config]
-}
-
-explore: canvas {
-  extends: [canvas_config]
-}
+include: "*.dashboard.lookml"
