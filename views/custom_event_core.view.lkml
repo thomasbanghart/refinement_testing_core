@@ -1,13 +1,4 @@
-include: "//@{CONFIG_PROJECT_NAME}/views/custom_event.view.lkml"
-
-
 view: custom_event {
-  extends: [custom_event_config]
-}
-
-###################################################
-
-view: custom_event_core {
   sql_table_name: CUSTOM_EVENT ;;
   drill_fields: [id]
 
@@ -53,6 +44,20 @@ view: custom_event_core {
     description: "JSON encoded string of the custom properties for this event"
   }
 
+  dimension: timezone {
+    type: string
+    hidden: yes
+    sql: ${TABLE}.timezone ;;
+    description: "IANA timezone of the user at the time of the event"
+  }
+
+  dimension: user_id {
+    type: number
+    hidden: yes
+    sql: ${TABLE}.user_id ;;
+    description: "braze user id of the user"
+  }
+
   dimension_group: time {
     label: ""
     hidden: yes
@@ -68,21 +73,8 @@ view: custom_event_core {
       fiscal_month_num,
       fiscal_quarter,
       fiscal_quarter_of_year,
-      fiscal_year]
-  }
-
-  dimension: timezone {
-    type: string
-    hidden: yes
-    sql: ${TABLE}.timezone ;;
-    description: "IANA timezone of the user at the time of the event"
-  }
-
-  dimension: user_id {
-    type: number
-    hidden: yes
-    sql: ${TABLE}.user_id ;;
-    description:"braze user id of the user"
+      fiscal_year
+    ]
   }
 
   measure: count {
