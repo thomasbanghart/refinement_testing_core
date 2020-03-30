@@ -1,15 +1,5 @@
-include: "//@{CONFIG_PROJECT_NAME}/views/canvas_conversion_event.view.lkml"
-
-
 view: canvas_conversion_event {
-  extends: [canvas_conversion_event_config]
-}
-
-###################################################
-
-view: canvas_conversion_event_core {
-  sql_table_name: CANVAS_CONVERSION_EVENT
-    ;;
+  sql_table_name: CANVAS_CONVERSION_EVENT ;;
   drill_fields: [id]
 
   dimension: id {
@@ -44,25 +34,6 @@ view: canvas_conversion_event_core {
     description: "id of the step for this message if from a Canvas"
   }
 
-  dimension_group: canvas_updated_at {
-    hidden:  yes
-    type: time
-    sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.canvas_updated_at) ;;
-    timeframes:
-    [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year,
-      fiscal_month_num,
-      fiscal_quarter,
-      fiscal_quarter_of_year,
-      fiscal_year
-    ]
-  }
-
   dimension: canvas_variation_id {
     hidden: yes
     type: number
@@ -76,11 +47,23 @@ view: canvas_conversion_event_core {
     description: "external id of the user"
   }
 
-  dimension_group: time {
+  dimension: timezone {
+    type: string
+    sql: ${TABLE}.timezone ;;
+    description: "IANA timezone of the user at the time of the event"
+  }
+
+  dimension: user_id {
+    type: number
+    sql: ${TABLE}.user_id ;;
+    description: "braze user id of the user"
+  }
+
+  dimension_group: canvas_updated_at {
+    hidden: yes
     type: time
-    sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.time) ;;
-    timeframes:
-    [
+    sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.canvas_updated_at) ;;
+    timeframes: [
       raw,
       date,
       week,
@@ -94,16 +77,21 @@ view: canvas_conversion_event_core {
     ]
   }
 
-  dimension: timezone {
-    type: string
-    sql: ${TABLE}.timezone ;;
-    description: "IANA timezone of the user at the time of the event"
-  }
-
-  dimension: user_id {
-    type: number
-    sql: ${TABLE}.user_id ;;
-    description:"braze user id of the user"
+  dimension_group: time {
+    type: time
+    sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.time) ;;
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year,
+      fiscal_month_num,
+      fiscal_quarter,
+      fiscal_quarter_of_year,
+      fiscal_year
+    ]
   }
 
   measure: count {
@@ -116,5 +104,4 @@ view: canvas_conversion_event_core {
     sql: ${count} / NULLIF(${canvas.estimated_impressions},0) ;;
     value_format_name: percent_1
   }
-
 }
