@@ -1,13 +1,4 @@
-include: "//@{CONFIG_PROJECT_NAME}/views/app_uninstall.view.lkml"
-
-
 view: app_uninstall {
-  extends: [app_uninstall_config]
-}
-##
-###################################################
-
-view: app_uninstall_core {
   sql_table_name: APP_UNINSTALL ;;
   drill_fields: [id]
 
@@ -37,7 +28,7 @@ view: app_uninstall_core {
   dimension: user_id {
     type: number
     sql: ${TABLE}.user_id ;;
-    description:"braze user id of the user"
+    description: "braze user id of the user"
   }
 
   measure: count {
