@@ -1,13 +1,4 @@
-include: "//@{CONFIG_PROJECT_NAME}/views/card_extra.view.lkml"
-
-
 view: card_extra {
-  extends: [card_extra_config]
-}
-
-###################################################
-
-view: card_extra_core {
   sql_table_name: CARD_EXTRA ;;
 
   dimension: card_id {
