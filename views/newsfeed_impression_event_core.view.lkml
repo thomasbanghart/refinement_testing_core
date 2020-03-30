@@ -1,13 +1,4 @@
-include: "//@{CONFIG_PROJECT_NAME}/views/newsfeed_impression_event.view.lkml"
-
-
 view: newsfeed_impression_event {
-  extends: [newsfeed_impression_event_config]
-}
-
-###################################################
-
-view: newsfeed_impression_event_core {
   sql_table_name: NEWSFEED_IMPRESSION_EVENT ;;
   drill_fields: [id]
 
@@ -39,6 +30,13 @@ view: newsfeed_impression_event_core {
     description: "external id of the user"
   }
 
+  dimension: user_id {
+    type: number
+    hidden: yes
+    sql: ${TABLE}.user_id ;;
+    description: "braze user id of the user"
+  }
+
   dimension_group: time {
     label: "Newsfeed Event"
     group_label: "Dates"
@@ -54,14 +52,8 @@ view: newsfeed_impression_event_core {
       fiscal_month_num,
       fiscal_quarter,
       fiscal_quarter_of_year,
-      fiscal_year]
-  }
-
-  dimension: user_id {
-    type: number
-    hidden: yes
-    sql: ${TABLE}.user_id ;;
-    description: "braze user id of the user"
+      fiscal_year
+    ]
   }
 
   measure: count {
