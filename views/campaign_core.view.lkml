@@ -1,12 +1,3 @@
-#include: "//@{CONFIG_PROJECT_NAME}/views/campaign.view.lkml"
-
-#
-# view: campaign {
-#   extends: [campaign_config]
-# }
-#
-# ###################################################
-
 view: campaign {
   sql_table_name: CAMPAIGN ;;
   drill_fields: [id]
@@ -71,24 +62,7 @@ view: campaign {
           WHEN ${channel_web_push} = TRUE THEN 'Web Push'
           WHEN ${channel_webhook} = TRUE THEN 'Webhook'
           WHEN ${channel_android_push} = TRUE THEN 'Android Push'
-        ELSE NULL END
-        ;;
-  }
-
-  dimension_group: created {
-    type: time
-    sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.created_at) ;;
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year,
-      fiscal_month_num,
-      fiscal_quarter,
-      fiscal_quarter_of_year,
-      fiscal_year]
+        ELSE NULL END ;;
   }
 
   dimension: draft {
@@ -118,6 +92,7 @@ view: campaign {
     type: string
     sql: ${TABLE}.name ;;
     description: "campaign name"
+
     link: {
       label: "Campaign Lookup Dashboard"
       url: "/dashboards/block_braze::campaign_lookup?Campaign Name={{ value }}"
@@ -128,7 +103,23 @@ view: campaign {
     type: string
     sql: ${TABLE}.schedule_type ;;
     description: "type of scheduling action"
+  }
 
+  dimension_group: created {
+    type: time
+    sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.created_at) ;;
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year,
+      fiscal_month_num,
+      fiscal_quarter,
+      fiscal_quarter_of_year,
+      fiscal_year
+    ]
   }
 
   dimension_group: updated {
@@ -145,14 +136,14 @@ view: campaign {
       fiscal_month_num,
       fiscal_quarter,
       fiscal_quarter_of_year,
-      fiscal_year]
+      fiscal_year
+    ]
   }
 
   dimension_group: today {
     type: time
     sql: CURRENT_TIMESTAMP() ;;
-    timeframes:
-    [
+    timeframes: [
       raw,
       date,
       week,
@@ -175,7 +166,7 @@ view: campaign {
   measure: estimated_audience {
     type: number
     sql: ${email_event.count} + ${subscription_event.count} + ${webhook_event.count} + ${subscription_event.count}
-      + ${in_app_message_event.count} + ${push_notification_event.count};;
+      + ${in_app_message_event.count} + ${push_notification_event.count} ;;
     drill_fields: [detail*]
   }
 

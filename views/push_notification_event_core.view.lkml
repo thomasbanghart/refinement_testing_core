@@ -1,13 +1,4 @@
-include: "//@{CONFIG_PROJECT_NAME}/views/push_notification_event.view.lkml"
-
-
 view: push_notification_event {
-  extends: [push_notification_event_config]
-}
-
-###################################################
-
-view: push_notification_event_core {
   sql_table_name: PUSH_NOTIFICATION_EVENT ;;
   drill_fields: [id]
 
@@ -32,23 +23,6 @@ view: push_notification_event_core {
     description: "id of the campaign if from a campaign"
   }
 
-  dimension_group: campaign_updated {
-    type: time
-    hidden: yes
-    sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.camapign_updated_at) ;;
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year,
-      fiscal_month_num,
-      fiscal_quarter,
-      fiscal_quarter_of_year,
-      fiscal_year]
-  }
-
   dimension: canvas_id {
     type: number
     hidden: yes
@@ -61,40 +35,6 @@ view: push_notification_event_core {
     hidden: yes
     sql: ${TABLE}.canvas_step_id ;;
     description: "id of the step for this message if from a Canvas"
-  }
-
-  dimension_group: canvas_step_updated {
-    type: time
-    hidden: yes
-    sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.canvas_step_updated_at) ;;
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year,
-      fiscal_month_num,
-      fiscal_quarter,
-      fiscal_quarter_of_year,
-      fiscal_year]
-  }
-
-  dimension_group: canvas_updated {
-    type: time
-    hidden: yes
-    sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.canvas_updated_at) ;;
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year,
-      fiscal_month_num,
-      fiscal_quarter,
-      fiscal_quarter_of_year,
-      fiscal_year]
   }
 
   dimension: canvas_variation_id {
@@ -132,9 +72,84 @@ view: push_notification_event_core {
     description: "id of the message variation if from a campaign"
   }
 
+  dimension: send_id {
+    type: number
+    hidden: yes
+    sql: ${TABLE}.send_id ;;
+    description: "id of the message if specified for the campaign"
+  }
+
+  dimension: timezone {
+    type: string
+    hidden: yes
+    sql: ${TABLE}.timezone ;;
+    description: "IANA timezone of the user at the time of the event"
+  }
+
+  dimension: user_id {
+    type: number
+    hidden: yes
+    sql: ${TABLE}.user_id ;;
+    description: "braze user id of the user"
+  }
+
+  dimension_group: campaign_updated {
+    type: time
+    hidden: yes
+    sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.camapign_updated_at) ;;
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year,
+      fiscal_month_num,
+      fiscal_quarter,
+      fiscal_quarter_of_year,
+      fiscal_year
+    ]
+  }
+
+  dimension_group: canvas_step_updated {
+    type: time
+    hidden: yes
+    sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.canvas_step_updated_at) ;;
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year,
+      fiscal_month_num,
+      fiscal_quarter,
+      fiscal_quarter_of_year,
+      fiscal_year
+    ]
+  }
+
+  dimension_group: canvas_updated {
+    type: time
+    hidden: yes
+    sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.canvas_updated_at) ;;
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year,
+      fiscal_month_num,
+      fiscal_quarter,
+      fiscal_quarter_of_year,
+      fiscal_year
+    ]
+  }
+
   dimension_group: message_variation_updated {
     type: time
-    hidden:  yes
+    hidden: yes
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.message_variation_iupdated_at) ;;
     timeframes: [
       raw,
@@ -146,14 +161,8 @@ view: push_notification_event_core {
       fiscal_month_num,
       fiscal_quarter,
       fiscal_quarter_of_year,
-      fiscal_year]
-  }
-
-  dimension: send_id {
-    type: number
-    hidden: yes
-    sql: ${TABLE}.send_id ;;
-    description: "id of the message if specified for the campaign"
+      fiscal_year
+    ]
   }
 
   dimension_group: time {
@@ -174,21 +183,7 @@ view: push_notification_event_core {
       fiscal_quarter,
       fiscal_quarter_of_year,
       fiscal_year
-      ]
-  }
-
-  dimension: timezone {
-    type: string
-    hidden: yes
-    sql: ${TABLE}.timezone ;;
-    description: "IANA timezone of the user at the time of the event"
-  }
-
-  dimension: user_id {
-    type: number
-    hidden: yes
-    sql: ${TABLE}.user_id ;;
-    description: "braze user id of the user"
+    ]
   }
 
   measure: count {
@@ -202,32 +197,24 @@ view: push_notification_event_core {
   measure: total_sent {
     group_label: "Push Notifications"
     type: count
-    ##filters: [ event_type: "Send"]
-    #filters: [event_type: "olive, aqua, black, white, teal"]
     value_format_name: decimal_0
   }
 
   measure: total_open {
     group_label: "Push Notifications"
     type: count
-    ##filters: [ event_type: "Open"]
-    #filters: [event_type: "lime, green, navy"]
     value_format_name: decimal_0
   }
 
   measure: total_ios_foreground {
     group_label: "Push Notifications"
     type: count
-    #filters: [ event_type: "iOS Foreground"]
     value_format_name: decimal_0
   }
-
 
   measure: total_bounces {
     group_label: "Push Notifications"
     type: count
-    ##filters: [ event_type: "Bounce"]
-    #filters: [event_type: "gray"]
     value_format_name: decimal_0
   }
 
@@ -244,7 +231,6 @@ view: push_notification_event_core {
     sql: ${total_bounces} / NULLIF(${total_sent},0) ;;
     value_format_name: percent_1
   }
-
 
   set: detail {
     fields: [

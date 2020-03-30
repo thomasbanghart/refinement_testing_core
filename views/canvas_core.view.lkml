@@ -1,13 +1,4 @@
-include: "//@{CONFIG_PROJECT_NAME}/views/canvas.view.lkml"
-
-
 view: canvas {
-  extends: [canvas_config]
-}
-
-###################################################
-
-view: canvas_core {
   sql_table_name: CANVAS ;;
   drill_fields: [id]
 
@@ -62,11 +53,33 @@ view: canvas_core {
     description: "Are web_hook events associated with Canvas?"
   }
 
+  dimension: draft {
+    type: yesno
+    sql: ${TABLE}.draft ;;
+    description: "whether this Canvas is a draft"
+  }
+
+  dimension: error {
+    type: yesno
+    sql: ${TABLE}.error ;;
+  }
+
+  dimension: name {
+    type: string
+    sql: ${TABLE}.name ;;
+    description: "Canvas name"
+  }
+
+  dimension: schedule_type {
+    type: string
+    sql: ${TABLE}.schedule_type ;;
+    description: "type of scheduling action"
+  }
+
   dimension_group: created_at {
     type: time
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.created_at) ;;
-    timeframes:
-    [
+    timeframes: [
       raw,
       date,
       week,
@@ -80,24 +93,11 @@ view: canvas_core {
     ]
   }
 
-
-  dimension: draft {
-    type: yesno
-    sql: ${TABLE}.draft ;;
-    description: "whether this Canvas is a draft"
-  }
-
-  dimension: error {
-    type: yesno
-    sql: ${TABLE}.error ;;
-  }
-
   dimension_group: first_sent {
     type: time
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.first_sent) ;;
     description: "date of first entry as ISO 8601 date"
-    timeframes:
-    [
+    timeframes: [
       raw,
       date,
       week,
@@ -115,8 +115,7 @@ view: canvas_core {
     type: time
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.last_sent) ;;
     description: "date of last entry as ISO 8601 date"
-    timeframes:
-    [
+    timeframes: [
       raw,
       date,
       week,
@@ -130,25 +129,11 @@ view: canvas_core {
     ]
   }
 
-  dimension: name {
-    type: string
-    sql: ${TABLE}.name ;;
-    description: "Canvas name"
-  }
-
-  dimension: schedule_type {
-    type: string
-    sql: ${TABLE}.schedule_type ;;
-    description: "type of scheduling action"
-  }
-
-
   dimension_group: updated_at {
     type: time
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.updated_at) ;;
     description: "date updated as ISO 8601 date"
-    timeframes:
-    [
+    timeframes: [
       raw,
       date,
       week,
@@ -171,7 +156,7 @@ view: canvas_core {
     label: "Impressions"
     type: number
     sql: ${email_event.count} + ${subscription_event.count} + ${webhook_event.count} + ${subscription_event.count}
-        + ${in_app_message_event.count} + ${push_notification_event.count};;
+        + ${in_app_message_event.count} + ${push_notification_event.count} ;;
     drill_fields: [detail*]
   }
 

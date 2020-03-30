@@ -1,13 +1,4 @@
-include: "//@{CONFIG_PROJECT_NAME}/views/canvas_tag.view.lkml"
-
-
 view: canvas_tag {
-  extends: [canvas_tag_config]
-}
-
-###################################################
-
-view: canvas_tag_core {
   sql_table_name: CANVAS_TAG ;;
 
   dimension: canvas_id {
@@ -17,12 +8,17 @@ view: canvas_tag_core {
     description: "id of the Canvas if from a canvas"
   }
 
+  dimension: tag {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.tag ;;
+  }
+
   dimension_group: canvas_updated_at {
     hidden: yes
     type: time
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.canvas_updated_at) ;;
-    timeframes:
-    [
+    timeframes: [
       raw,
       date,
       week,
@@ -34,12 +30,6 @@ view: canvas_tag_core {
       fiscal_quarter_of_year,
       fiscal_year
     ]
-  }
-
-  dimension: tag {
-    hidden: yes
-    type: number
-    sql: ${TABLE}.tag ;;
   }
 
   measure: count {

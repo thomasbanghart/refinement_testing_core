@@ -1,15 +1,5 @@
-include: "//@{CONFIG_PROJECT_NAME}/views/canvas_conversion_behavior.view.lkml"
-
-
 view: canvas_conversion_behavior {
-  extends: [canvas_conversion_behavior_config]
-}
-
-###################################################
-
-view: canvas_conversion_behavior_core {
-  sql_table_name: CANVAS_CONVERSION_BEHAVIOR
-    ;;
+  sql_table_name: CANVAS_CONVERSION_BEHAVIOR ;;
   drill_fields: [id]
 
   dimension: id {
@@ -25,12 +15,23 @@ view: canvas_conversion_behavior_core {
     description: "id of the Canvas if from a canvas"
   }
 
+  dimension: conversion_behavior {
+    type: string
+    sql: ${TABLE}.conversion_behavior ;;
+    description: "JSON-encoded string describing the conversion behavior"
+  }
+
+  dimension: conversion_behavior_index {
+    type: number
+    sql: ${TABLE}.conversion_behavior_index ;;
+    description: "index of the conversion behavior"
+  }
+
   dimension_group: canvas_updated_at {
     type: time
-    hidden:  yes
+    hidden: yes
     sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.canvas_updated_at) ;;
-    timeframes:
-    [
+    timeframes: [
       raw,
       date,
       week,
@@ -42,18 +43,6 @@ view: canvas_conversion_behavior_core {
       fiscal_quarter_of_year,
       fiscal_year
     ]
-  }
-
-  dimension: conversion_behavior {
-    type: string
-    sql: ${TABLE}.conversion_behavior ;;
-    description: "JSON-encoded string describing the conversion behavior"
-  }
-
-  dimension: conversion_behavior_index {
-    type: number
-    sql: ${TABLE}.conversion_behavior_index ;;
-    description: "index of the conversion behavior"
   }
 
   measure: count {

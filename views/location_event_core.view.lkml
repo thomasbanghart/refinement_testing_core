@@ -1,13 +1,4 @@
-include: "//@{CONFIG_PROJECT_NAME}/views/location_event.view.lkml"
-
-
 view: location_event {
-  extends: [location_event_config]
-}
-
-###################################################
-
-view: location_event_core {
   sql_table_name: LOCATION_EVENT ;;
   drill_fields: [id]
 
@@ -72,6 +63,13 @@ view: location_event_core {
     description: "longitude of recorded location"
   }
 
+  dimension: user_id {
+    type: number
+    hidden: yes
+    sql: ${TABLE}.user_id ;;
+    description: "braze user id of the user"
+  }
+
   dimension_group: time {
     label: ""
     hidden: yes
@@ -87,14 +85,8 @@ view: location_event_core {
       fiscal_month_num,
       fiscal_quarter,
       fiscal_quarter_of_year,
-      fiscal_year]
-  }
-
-  dimension: user_id {
-    type: number
-    hidden: yes
-    sql: ${TABLE}.user_id ;;
-    description: "braze user id of the user"
+      fiscal_year
+    ]
   }
 
   measure: count {

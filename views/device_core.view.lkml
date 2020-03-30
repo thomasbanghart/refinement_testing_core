@@ -1,13 +1,4 @@
-include: "//@{CONFIG_PROJECT_NAME}/views/device.view.lkml"
-
-
 view: device {
-  extends: [device_config]
-}
-
-###################################################
-
-view: device_core {
   sql_table_name: DEVICE ;;
   drill_fields: [id]
 

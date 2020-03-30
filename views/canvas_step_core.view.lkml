@@ -1,13 +1,4 @@
-include: "//@{CONFIG_PROJECT_NAME}/views/canvas_step.view.lkml"
-
-
 view: canvas_step {
-  extends: [canvas_step_config]
-}
-
-###################################################
-
-view: canvas_step_core {
   sql_table_name: CANVAS_STEP ;;
   drill_fields: [id]
 
@@ -19,7 +10,6 @@ view: canvas_step_core {
   }
 
   dimension: canvas_id {
-#     hidden: yes
     type: number
     sql: ${TABLE}.canvas_id ;;
     description: "id of the Canvas if from a canvas"
@@ -30,27 +20,7 @@ view: canvas_step_core {
     sql: ${TABLE}.canvas_step_name ;;
   }
 
-  dimension_group: canvas_updated_at {
-    hidden: yes
-    type: time
-    sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.canvas_updated_at) ;;
-    timeframes:
-    [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year,
-      fiscal_month_num,
-      fiscal_quarter,
-      fiscal_quarter_of_year,
-      fiscal_year
-    ]
-  }
-
-#3/10/20: Moved dimensions from canvas_variation and canvas_tag here since they do not seem to need their own view files
-  dimension: canvas_variant_name{
+  dimension: canvas_variant_name {
     sql: ${canvas_variation.variant_name} ;;
   }
 
@@ -86,11 +56,28 @@ view: canvas_step_core {
     sql: ${TABLE}.channel_webhook ;;
   }
 
+  dimension_group: canvas_updated_at {
+    hidden: yes
+    type: time
+    sql: PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%S', ${TABLE}.canvas_updated_at) ;;
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year,
+      fiscal_month_num,
+      fiscal_quarter,
+      fiscal_quarter_of_year,
+      fiscal_year
+    ]
+  }
+
   measure: count {
     type: count
     drill_fields: [detail*]
   }
-
 
   set: detail {
     fields: [

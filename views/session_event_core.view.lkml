@@ -1,13 +1,4 @@
-include: "//@{CONFIG_PROJECT_NAME}/views/session_event.view.lkml"
-
-
 view: session_event {
-  extends: [session_event_config]
-}
-
-###################################################
-
-view: session_event_core {
   sql_table_name: SESSION_EVENT ;;
   drill_fields: [id]
 
@@ -44,7 +35,17 @@ view: session_event_core {
     sql: ${duration}/60 ;;
     type: tier
     style: integer
-    tiers: [0, 15, 30, 45, 60, 75, 90, 105, 120]
+    tiers: [
+      0,
+      15,
+      30,
+      45,
+      60,
+      75,
+      90,
+      105,
+      120
+    ]
   }
 
   dimension: event_type {
@@ -68,6 +69,20 @@ view: session_event_core {
     description: "id of the session"
   }
 
+  dimension: timezone {
+    type: string
+    hidden: yes
+    sql: ${TABLE}.timezone ;;
+    description: "IANA timezone of the user at the time of the event"
+  }
+
+  dimension: user_id {
+    type: number
+    hidden: yes
+    sql: ${TABLE}.user_id ;;
+    description: "braze user id of the user"
+  }
+
   dimension_group: time {
     label: "Session Event"
     group_label: "Dates"
@@ -84,21 +99,8 @@ view: session_event_core {
       fiscal_month_num,
       fiscal_quarter,
       fiscal_quarter_of_year,
-      fiscal_year]
-  }
-
-  dimension: timezone {
-    type: string
-    hidden: yes
-    sql: ${TABLE}.timezone ;;
-    description: "IANA timezone of the user at the time of the event"
-  }
-
-  dimension: user_id {
-    type: number
-    hidden: yes
-    sql: ${TABLE}.user_id ;;
-    description: "braze user id of the user"
+      fiscal_year
+    ]
   }
 
   measure: count {
