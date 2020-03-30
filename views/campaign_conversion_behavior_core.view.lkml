@@ -1,13 +1,4 @@
-include: "//@{CONFIG_PROJECT_NAME}/views/campaign_conversion_behavior.view.lkml"
-
-
 view: campaign_conversion_behavior {
-  extends: [campaign_conversion_behavior_config]
-}
-
-###################################################
-
-view: campaign_conversion_behavior_core {
   sql_table_name: CAMPAIGN_CONVERSION_BEHAVIOR ;;
 
   dimension: campaign_id {
@@ -15,6 +6,18 @@ view: campaign_conversion_behavior_core {
     sql: ${TABLE}.campaign_id ;;
     hidden: yes
     description: "id of the campaign if from a campaign"
+  }
+
+  dimension: conversion_behavior {
+    type: string
+    sql: ${TABLE}.conversion_behavior ;;
+    description: "JSON-encoded string describing the conversion behavior"
+  }
+
+  dimension: conversion_behavior_index {
+    type: number
+    sql: ${TABLE}.conversion_behavior_index ;;
+    description: "index of the conversion behavior"
   }
 
   dimension_group: updated {
@@ -31,19 +34,8 @@ view: campaign_conversion_behavior_core {
       fiscal_month_num,
       fiscal_quarter,
       fiscal_quarter_of_year,
-      fiscal_year]
-  }
-
-  dimension: conversion_behavior {
-    type: string
-    sql: ${TABLE}.conversion_behavior ;;
-    description: "JSON-encoded string describing the conversion behavior"
-  }
-
-  dimension: conversion_behavior_index {
-    type: number
-    sql: ${TABLE}.conversion_behavior_index ;;
-    description: "index of the conversion behavior"
+      fiscal_year
+    ]
   }
 
   measure: count {
